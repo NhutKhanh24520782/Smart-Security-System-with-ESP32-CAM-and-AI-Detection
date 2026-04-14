@@ -3,7 +3,7 @@
 # Flask server configuration
 FLASK_HOST = '0.0.0.0'
 FLASK_PORT = 5000
-FLASK_DEBUG = True
+FLASK_DEBUG = False  # Disable debug mode to prevent restart loop from log/image writes
 
 # Telegram bot configuration
 TELEGRAM_BOT_TOKEN = '8798378490:AAE7timUHd8ZPFWybJox6ODXtNgEs0blrjQ'  # Get from @BotFather

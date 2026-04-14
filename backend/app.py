@@ -100,4 +100,4 @@ def index():
 if __name__ == '__main__':
     logger.info("Starting Smart Security System Backend")
     init_mqtt(coordinator)
-    app.run(host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG)
+    app.run(host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG, use_reloader=False)

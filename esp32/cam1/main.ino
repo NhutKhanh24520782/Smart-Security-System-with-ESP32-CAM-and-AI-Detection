@@ -1,13 +1,15 @@
 #define MQTT_MAX_PACKET_SIZE 262144
 #include <WiFi.h>
-#include <WiFiClient.h>
+#include <WiFiClientSecure.h>
 #include <PubSubClient.h>
+#include <WebServer.h>  // ✅ HTTP server cho gửi ảnh
 #include <esp_camera.h>
 #include <time.h>
 
 // Pin definitions
 #define PIR_PIN 13        // PIR sensor pin
 #define BUZZER_PIN 14     // Buzzer pin (LOW active)
+#define FLASH_LED_PIN 4   // LED Flash pin (HIGH to turn on)
 
 // Camera pins for ESP32-CAM
 #define PWDN_GPIO_NUM     32
@@ -46,8 +48,9 @@ const unsigned long debounceDelay = 2000;   // 2 seconds debounce
 unsigned long pirHighStart = 0;
 bool pirStable = false;
 
-WiFiClient wifiClient;
+WiFiClientSecure wifiClient;
 PubSubClient mqttClient(wifiClient);
+WebServer server(80);  // ✅ HTTP server port 80
 
 static const char base64Chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
@@ -62,49 +65,41 @@ String getTimestamp() {
   return String(buffer);
 }
 
-String base64Encode(const uint8_t *data, size_t inputLen) {
-  String encoded;
-  encoded.reserve(((inputLen + 2) / 3) * 4);
-
-  uint8_t char_array_3[3];
-  uint8_t char_array_4[4];
-  int i = 0;
-
-  while (inputLen--) {
-    char_array_3[i++] = *(data++);
-    if (i == 3) {
-      char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-      char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-      char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-      char_array_4[3] = char_array_3[2] & 0x3f;
-
-      for (i = 0; i < 4; i++) {
-        encoded += base64Chars[char_array_4[i]];
-      }
-      i = 0;
-    }
+// ✅ HTTP handler để backend lấy ảnh (with LED flash indicator)
+void handleCapture() {
+  Serial.println("📸 handleCapture() called");
+  
+  // ✅ Bật LED flash để báo hiệu
+  digitalWrite(FLASH_LED_PIN, HIGH);
+  delay(100);  // Flash sáng ngắn
+  
+  camera_fb_t *fb = esp_camera_fb_get();
+  
+  // Tắt LED flash
+  digitalWrite(FLASH_LED_PIN, LOW);
+  
+  if (!fb) {
+    Serial.println("❌ esp_camera_fb_get() returned NULL - frame buffer not available!");
+    server.send(500, "text/plain", "Capture failed - no frame buffer");
+    return;
   }
 
-  if (i > 0) {
-    for (int j = i; j < 3; j++) {
-      char_array_3[j] = '\0';
-    }
-
-    char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-    char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-    char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-    char_array_4[3] = char_array_3[2] & 0x3f;
-
-    for (int j = 0; j < i + 1; j++) {
-      encoded += base64Chars[char_array_4[j]];
-    }
-
-    while ((i++ < 3)) {
-      encoded += '=';
-    }
+  if (fb->len == 0) {
+    Serial.println("❌ Frame buffer size is 0 - invalid frame!");
+    esp_camera_fb_return(fb);
+    server.send(500, "text/plain", "Capture failed - empty frame");
+    return;
   }
 
-  return encoded;
+  Serial.printf("✅ Frame captured: %d bytes (LED flashed)\n", fb->len);
+  server.send_P(200, "image/jpeg", (const char *)fb->buf, fb->len);
+  Serial.printf("📸 Image sent: %d bytes\n", fb->len);
+  esp_camera_fb_return(fb);
+}
+
+// ✅ HTTP health check
+void handleHealth() {
+  server.send(200, "application/json", "{\"status\":\"ok\",\"device\":\"" + String(deviceId) + "\"}");
 }
 
 void initCamera() {
@@ -129,13 +124,32 @@ void initCamera() {
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 20000000;
   config.pixel_format = PIXFORMAT_JPEG;
-  config.frame_size = FRAMESIZE_VGA;
-  config.jpeg_quality = 12;
+  config.frame_size = FRAMESIZE_QVGA;  // 320x240
+  config.jpeg_quality = 12;  // ✅ Normal quality
   config.fb_count = 1;
 
+  Serial.println("🎥 Initializing camera...");
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
-    Serial.printf("Camera init failed with error 0x%x\n", err);
+    Serial.printf("❌ Camera init failed with error 0x%x\n", err);
+    switch(err) {
+      case ESP_ERR_INVALID_ARG: Serial.println("   Reason: INVALID_ARG"); break;
+      case ESP_ERR_INVALID_STATE: Serial.println("   Reason: INVALID_STATE"); break;
+      case ESP_ERR_NO_MEM: Serial.println("   Reason: NO_MEM (out of memory)"); break;
+      default: Serial.println("   Reason: Unknown error");
+    }
+    return;
+  }
+  Serial.println("✅ Camera initialized successfully");
+  
+  // Try first capture
+  delay(500);
+  camera_fb_t *test_fb = esp_camera_fb_get();
+  if (test_fb) {
+    Serial.printf("✅ First frame captured: %d bytes\n", test_fb->len);
+    esp_camera_fb_return(test_fb);
+  } else {
+    Serial.println("❌ Failed to capture first frame!");
   }
 }
 
@@ -160,7 +174,7 @@ void connectWiFi() {
 void connectMqtt() {
   mqttClient.setServer(mqttBroker, mqttPort);
   mqttClient.setKeepAlive(60);
-  mqttClient.setBufferSize(262144);
+  mqttClient.setBufferSize(32768);  // ✅ 32KB (đủ cho ~20KB payload)
 
   while (!mqttClient.connected()) {
     Serial.printf("Connecting to MQTT broker %s:%d...\n", mqttBroker, mqttPort);
@@ -173,49 +187,51 @@ void connectMqtt() {
   }
 }
 
-String buildPayload(camera_fb_t *fb) {
-  String payload = "{";
-  payload += String("\"device_id\": \"") + deviceId + "\",";
-  payload += String("\"timestamp\": \"") + getTimestamp() + "\",";
-  payload += String("\"image\": \"") + base64Encode(fb->buf, fb->len) + "\"";
-  payload += "}";
-  return payload;
-}
-
-void publishMotionEvent(camera_fb_t *fb) {
-  if (WiFi.status() != WL_CONNECTED) {
-    Serial.println("WiFi not connected, cannot publish MQTT event");
-    return;
-  }
-
+// ✅ MQTT: chỉ gửi event (không gửi ảnh!)
+void publishMotionEvent() {
   if (!mqttClient.connected()) {
+    Serial.println("❌ MQTT not connected, reconnecting...");
     connectMqtt();
   }
 
+  delay(100);
   mqttClient.loop();
-  String payload = buildPayload(fb);
+  
+  // ✅ Event payload + IP (dynamic)
+  String payload = "{";
+  payload += "\"device_id\":\"" + String(deviceId) + "\",";
+  payload += "\"motion\":true,";
+  payload += "\"timestamp\":\"" + getTimestamp() + "\",";
+  payload += "\"ip\":\"" + WiFi.localIP().toString() + "\"";
+  payload += "}";
+  
+  Serial.printf("📤 Publishing MQTT payload (%d bytes):\n", payload.length());
+  Serial.println("   " + payload);
+  
   bool published = mqttClient.publish(mqttTopic.c_str(), payload.c_str());
   if (published) {
-    Serial.println("MQTT motion event published");
+    Serial.printf("✅ Motion event published successfully to topic: %s\n", mqttTopic.c_str());
   } else {
-    Serial.println("MQTT publish failed");
+    Serial.printf("❌ MQTT publish failed (state=%d)\n", mqttClient.state());
   }
 }
 
+// ❌ XÓA buildPayload (không cần nữa)
+
 void captureAndSend() {
+  Serial.println("🔴 captureAndSend() called - motion event triggered");
+  
+  // Buzzer pulse
   digitalWrite(BUZZER_PIN, LOW);
-  delay(1000);
-
-  camera_fb_t *fb = esp_camera_fb_get();
-  if (!fb) {
-    Serial.println("Camera capture failed");
-    digitalWrite(BUZZER_PIN, HIGH);
-    return;
-  }
-
-  publishMotionEvent(fb);
-  esp_camera_fb_return(fb);
+  delay(500);
   digitalWrite(BUZZER_PIN, HIGH);
+  Serial.println("   Buzzer pulsed");
+
+  // MQTT publish
+  Serial.println("   Publishing motion event to MQTT...");
+  publishMotionEvent();
+  
+  Serial.println("🔴 Motion event sent to MQTT");
 }
 
 void setup() {
@@ -223,12 +239,37 @@ void setup() {
   pinMode(PIR_PIN, INPUT);
   pinMode(BUZZER_PIN, OUTPUT);
   digitalWrite(BUZZER_PIN, HIGH);
+  pinMode(FLASH_LED_PIN, OUTPUT);
+  digitalWrite(FLASH_LED_PIN, LOW);  // LED off initially
 
   connectWiFi();
+  Serial.print("WiFi IP: ");
+  Serial.println(WiFi.localIP());
+  
+  wifiClient.setInsecure();
   initTime();
   initCamera();
-  mqttClient.setServer(mqttBroker, mqttPort);
-  mqttClient.setBufferSize(262144);
+  
+  mqttClient.setBufferSize(32768);
+  connectMqtt();
+
+  // ✅ Setup HTTP server
+  server.on("/capture", HTTP_GET, handleCapture);
+  server.on("/health", HTTP_GET, handleHealth);
+  server.on("/test", HTTP_GET, []() {
+    Serial.println("📸 /test endpoint called - capturing test frame...");
+    camera_fb_t *fb = esp_camera_fb_get();
+    if (!fb) {
+      Serial.println("❌ Test: esp_camera_fb_get() failed");
+      server.send(500, "text/plain", "esp_camera_fb_get() returned NULL");
+      return;
+    }
+    Serial.printf("✅ Test: Captured %d bytes\n", fb->len);
+    server.send_P(200, "image/jpeg", (const char *)fb->buf, fb->len);
+    esp_camera_fb_return(fb);
+  });
+  server.begin();
+  Serial.println("HTTP server started on port 80 (/capture, /health, /test)");
 
   Serial.println("Setup complete");
 }
@@ -241,20 +282,31 @@ void loop() {
     if (!pirStable) {
       pirHighStart = currentTime;
       pirStable = true;
+      Serial.println("📍 PIR triggered (waiting for debounce)");
     } else if (currentTime - pirHighStart >= debounceDelay) {
       if (currentTime - lastTriggerTime >= cooldownPeriod) {
-        Serial.println("Motion detected, capturing image...");
+        Serial.println("🔴 Motion detected!");
         captureAndSend();
         lastTriggerTime = currentTime;
+      } else {
+        unsigned long timeUntilCooldown = cooldownPeriod - (currentTime - lastTriggerTime);
+        Serial.printf("⏳ Cooldown active (%d ms remaining)\n", (int)timeUntilCooldown);
       }
     }
   } else {
-    pirStable = false;
+    if (pirStable) {
+      Serial.println("📍 PIR released");
+      pirStable = false;
+    }
   }
 
+  // ✅ Handle HTTP requests
+  server.handleClient();
+
+  // Keep MQTT alive
   if (mqttClient.connected()) {
     mqttClient.loop();
   }
 
-  delay(100);
+  delay(50);
 }

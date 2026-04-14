@@ -1,1 +1,578 @@
 2026-04-14 00:22:30,608 - mqtt_client - INFO - Connecting to MQTT broker YOUR_MQTT_BROKER_HOST:1883
+2026-04-14 16:32:30,763 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 16:32:30,764 - mqtt_client - INFO - Connecting to MQTT broker YOUR_MQTT_BROKER_HOST:1883
+2026-04-14 16:44:39,760 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 16:44:39,760 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 16:44:40,208 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 16:44:40,208 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 16:44:40,208 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 16:44:40,428 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:44:40,550 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 16:44:40,550 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 16:44:40,886 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 16:44:40,905 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 16:44:41,128 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:44:41,974 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:44:42,639 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:48,756 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 16:51:48,756 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 16:51:49,554 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 16:51:49,554 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 16:51:49,555 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 16:51:49,806 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:49,902 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 16:51:49,902 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 16:51:50,433 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 16:51:50,436 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 16:51:50,784 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:51,743 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:52,411 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:54,241 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:54,899 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:58,848 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:51:59,481 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:52:07,592 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:52:08,246 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:52:24,153 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:52:24,776 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:52:56,749 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:52:57,369 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:54:01,418 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:54:01,880 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:56:02,181 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:56:02,461 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:58:03,027 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 16:58:03,038 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:00:03,760 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:00:03,791 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:02:04,375 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:02:04,375 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:04:05,073 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:04:05,073 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:17,512 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:05:17,512 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:05:17,889 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 17:05:17,890 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 17:05:17,890 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 17:05:18,130 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:18,259 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:05:18,259 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:05:18,601 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 17:05:18,605 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 17:05:18,966 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:19,677 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:20,731 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:22,310 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:23,222 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:26,929 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:27,846 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:35,479 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:36,394 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:05:45,779 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/mqtt_client.py', reloading
+2026-04-14 17:05:45,878 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 17:05:46,230 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:05:46,253 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:05:46,254 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:05:47,132 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 17:05:47,135 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 17:05:47,437 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:05:50,442 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:05:50,464 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:05:50,465 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:05:55,182 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/mqtt_client.py', reloading
+2026-04-14 17:05:55,277 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 17:05:55,667 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:05:55,691 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:05:55,691 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:06:02,605 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:06:02,629 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:06:02,629 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:06:03,857 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 17:06:03,857 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 17:06:03,858 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 17:06:04,136 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:06:04,223 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:06:04,247 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:06:04,247 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:06:05,017 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 17:06:05,020 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 17:06:05,248 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:07:01,331 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:07:01,354 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:07:01,354 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:07:02,379 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 17:07:02,379 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 17:07:02,380 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 17:07:02,776 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:07:02,798 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:07:02,799 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:07:02,805 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:07:04,133 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 17:07:04,136 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 17:07:04,375 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:09:02,977 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:09:04,316 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:09:05,788 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:09:06,514 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:10:06,314 - mqtt_client - WARNING - MQTT disconnected, rc=7
+2026-04-14 17:10:08,578 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:11:04,178 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 17:11:04,179 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 17:11:06,177 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:14:32,657 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:14:32,658 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:16:14,292 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:16:14,314 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:16:14,315 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:16:15,533 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 17:16:15,533 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 17:16:15,534 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 17:16:15,784 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:16:15,878 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:16:15,900 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:16:15,901 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:16:16,634 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 17:16:16,636 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 17:16:17,011 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:19:37,287 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:19:37,313 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:19:37,314 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:19:38,179 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 17:19:38,179 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 17:19:38,180 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 17:19:38,533 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 17:19:38,542 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 17:19:38,558 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 17:19:38,558 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 17:19:39,429 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 17:19:39,433 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 17:19:39,671 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:21:46,803 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:21:46,826 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:21:46,826 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:21:48,156 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 18:21:48,156 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 18:21:48,156 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 18:21:48,411 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:21:48,512 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:21:48,541 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:21:48,541 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:21:49,278 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 18:21:49,280 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 18:21:49,504 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:25:41,954 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:25:41,954 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:25:56,855 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:25:56,971 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:11,928 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:11,928 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:27,108 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:27,108 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:42,066 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:42,066 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:57,111 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:26:57,111 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:27:12,025 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:27:12,045 - mqtt_client - WARNING - MQTT message missing required fields
+2026-04-14 18:30:54,129 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:30:54,153 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:30:54,153 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:30:55,684 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 18:30:55,685 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 18:30:55,685 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 18:30:55,982 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:30:56,053 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:30:56,076 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:30:56,076 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:30:56,894 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 18:30:56,897 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 18:30:57,254 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:31:21,305 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:31:21,311 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:31:26,312 - mqtt_client - ERROR - Failed to fetch image from cam1: HTTPConnectionPool(host='192.168.1.100', port=80): Max retries exceeded with url: /capture (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x732cb0dbdfd0>, 'Connection to 192.168.1.100 timed out. (connect timeout=5)'))
+2026-04-14 18:31:26,312 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:31:26,318 - mqtt_client - ERROR - Failed to fetch image from cam1: HTTPConnectionPool(host='192.168.1.100', port=80): Max retries exceeded with url: /capture (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f60a010ec90>, 'Connection to 192.168.1.100 timed out. (connect timeout=5)'))
+2026-04-14 18:31:26,319 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:31:36,642 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:31:36,642 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:31:41,648 - mqtt_client - ERROR - Failed to fetch image from cam1: HTTPConnectionPool(host='192.168.1.100', port=80): Max retries exceeded with url: /capture (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f608ede48c0>, 'Connection to 192.168.1.100 timed out. (connect timeout=5)'))
+2026-04-14 18:31:41,648 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:31:41,648 - mqtt_client - ERROR - Failed to fetch image from cam1: HTTPConnectionPool(host='192.168.1.100', port=80): Max retries exceeded with url: /capture (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x732cac5e8350>, 'Connection to 192.168.1.100 timed out. (connect timeout=5)'))
+2026-04-14 18:31:41,649 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:31:51,592 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:31:51,592 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:31:56,599 - mqtt_client - ERROR - Failed to fetch image from cam1: HTTPConnectionPool(host='192.168.1.100', port=80): Max retries exceeded with url: /capture (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f608ede5250>, 'Connection to 192.168.1.100 timed out. (connect timeout=5)'))
+2026-04-14 18:31:56,599 - mqtt_client - ERROR - Failed to fetch image from cam1: HTTPConnectionPool(host='192.168.1.100', port=80): Max retries exceeded with url: /capture (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x732cac5e85f0>, 'Connection to 192.168.1.100 timed out. (connect timeout=5)'))
+2026-04-14 18:31:56,599 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:31:56,599 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:41:44,762 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:41:44,786 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:41:44,786 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:41:46,030 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 18:41:46,030 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 18:41:46,031 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 18:41:46,314 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:41:46,411 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:41:46,437 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:41:46,437 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:41:47,353 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 18:41:47,356 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 18:41:47,646 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:43:56,699 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:43:56,699 - mqtt_client - WARNING - Missing IP in MQTT message from cam1
+2026-04-14 18:43:56,699 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:43:56,699 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:43:56,699 - mqtt_client - WARNING - Missing IP in MQTT message from cam1
+2026-04-14 18:43:56,699 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:45:12,514 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:45:12,514 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:45:12,514 - mqtt_client - WARNING - Missing IP in MQTT message from cam1
+2026-04-14 18:45:12,514 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:45:12,514 - mqtt_client - WARNING - Missing IP in MQTT message from cam1
+2026-04-14 18:45:12,514 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:46:01,659 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:46:01,659 - mqtt_client - WARNING - Missing IP in MQTT message from cam1
+2026-04-14 18:46:01,659 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:46:01,659 - mqtt_client - INFO - 🔴 Motion event from cam1, fetching image via HTTP
+2026-04-14 18:46:01,659 - mqtt_client - WARNING - Missing IP in MQTT message from cam1
+2026-04-14 18:46:01,659 - mqtt_client - WARNING - Failed to fetch image from cam1
+2026-04-14 18:47:13,801 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:47:13,846 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:47:13,846 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:47:15,217 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 18:47:15,217 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 18:47:15,218 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 18:47:15,578 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 18:47:15,831 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 18:47:15,876 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 18:47:15,877 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 18:47:16,769 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 18:47:16,773 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 18:47:17,118 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:02:01,987 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:02:02,033 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:02:02,034 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:02:03,395 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 19:02:03,395 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 19:02:03,396 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 19:02:03,753 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:02:04,038 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:02:04,084 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:02:04,085 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:02:09,317 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 19:02:09,321 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 19:02:09,681 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:11:26,604 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/mqtt_client.py', reloading
+2026-04-14 19:11:26,737 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 19:11:27,380 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:11:27,426 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:11:27,427 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:11:28,465 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 19:11:28,469 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 19:11:28,885 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:11:36,546 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/mqtt_client.py', reloading
+2026-04-14 19:11:36,679 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 19:11:37,380 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:11:37,433 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:11:37,433 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:11:38,306 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 19:11:38,310 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 19:11:38,685 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:20:37,218 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:20:37,240 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:20:37,240 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:20:38,549 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 19:20:38,549 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 19:20:38,550 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 19:20:38,922 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:20:38,945 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:20:38,945 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:20:39,030 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:20:45,213 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 19:20:45,216 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 19:20:45,472 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:22:07,565 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:22:07,590 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:22:07,590 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:22:08,867 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 19:22:08,867 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 19:22:08,868 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 19:22:09,222 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:22:09,245 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:22:09,245 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:22:09,249 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:22:10,182 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 19:22:10,186 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 19:22:10,543 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:27:59,778 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:27:59,801 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:27:59,801 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:28:04,440 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 19:28:04,440 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 19:28:04,441 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 19:28:04,794 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 19:28:04,817 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 19:28:04,817 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 19:28:04,849 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:28:05,681 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 19:28:05,684 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 19:28:06,045 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:36:08,532 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:36:08,532 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:36:10,671 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:37:03,407 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:37:03,407 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:37:05,748 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:58:12,855 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:58:12,855 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:58:15,591 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:58:18,134 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:58:18,134 - mqtt_client - WARNING - MQTT disconnected, rc=16
+2026-04-14 19:58:20,939 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 19:58:25,019 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-14 19:58:25,019 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-14 19:58:25,019 - mqtt_client - INFO - 🔴 Motion event from cam1
+2026-04-14 19:58:25,020 - mqtt_client - INFO -    Device IP: 10.87.175.144
+2026-04-14 19:58:25,020 - mqtt_client - INFO - 🔴 Motion event from cam1
+2026-04-14 19:58:25,020 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-14 19:58:25,020 - mqtt_client - INFO -    Device IP: 10.87.175.144
+2026-04-14 19:58:25,020 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-14 19:58:25,020 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-14 19:58:25,020 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-14 19:58:25,234 - mqtt_client - INFO -    ✅ Image fetched: 3545 bytes
+2026-04-14 19:58:25,235 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260414_125824.jpg
+2026-04-14 19:58:25,235 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-14 19:58:25,247 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-14 19:58:25,409 - mqtt_client - INFO -    ✅ Image fetched: 3926 bytes
+2026-04-14 19:58:25,409 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260414_125824.jpg
+2026-04-14 19:58:25,410 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-14 19:58:25,420 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-14 20:00:51,378 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:00:51,403 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:00:51,403 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:00:53,006 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:00:53,006 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:00:53,007 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:00:53,376 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:00:53,398 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:00:53,399 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:00:53,427 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:00:54,240 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:00:54,244 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:00:54,496 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:04:24,559 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:04:24,587 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:04:24,587 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:04:26,281 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:04:26,281 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:04:26,282 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:04:26,569 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:04:26,630 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:04:26,652 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:04:26,652 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:04:28,795 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:04:28,798 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:04:29,402 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:11:44,091 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/mqtt_client.py', reloading
+2026-04-14 20:11:44,193 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:11:44,550 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:11:44,573 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:11:44,574 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:11:45,614 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:11:45,616 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:11:45,897 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:12:00,706 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/mqtt_client.py', reloading
+2026-04-14 20:12:00,808 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:12:01,162 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:12:01,185 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:12:01,185 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:12:02,290 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:12:02,293 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:12:03,208 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:12:16,361 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/mqtt_client.py', reloading
+2026-04-14 20:12:16,457 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:12:16,812 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:12:16,835 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:12:16,835 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:12:17,810 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:12:17,812 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:12:18,056 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:20:16,163 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:20:16,194 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:20:16,194 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:20:17,824 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:20:17,824 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:20:17,825 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:20:18,180 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:20:18,203 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:20:18,203 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:20:18,208 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:20:19,458 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:20:19,461 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:20:19,844 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:25:31,084 - werkzeug - INFO -  * Detected change in '/home/nhutkhanh/claude/project/backend/services/telegram.py', reloading
+2026-04-14 20:25:31,233 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:31:03,360 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:31:03,383 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:31:03,383 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:31:04,653 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:31:04,653 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:31:04,653 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:31:05,002 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:31:05,008 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:31:05,030 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:31:05,031 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:31:06,042 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:31:06,046 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:31:06,750 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:35:07,333 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:35:07,357 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:35:07,357 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:36:02,619 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:36:02,642 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:36:02,642 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:36:05,012 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:36:05,013 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:36:05,013 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:36:05,377 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:36:05,400 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:36:05,400 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:36:05,429 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:36:06,504 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:36:06,507 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:36:06,795 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:37:39,406 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:37:39,441 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:37:39,441 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:37:40,951 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:37:40,952 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:37:40,952 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:37:41,308 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:37:41,331 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:37:41,331 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:37:41,541 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:37:42,469 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:37:42,472 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:37:42,714 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:45:46,930 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:45:46,953 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:45:46,953 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:45:48,096 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:45:48,096 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:45:48,096 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:45:48,449 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:45:48,471 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:45:48,471 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:45:48,561 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:45:49,267 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:45:49,270 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:45:49,503 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:47:23,811 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:47:23,835 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:47:23,835 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:47:24,731 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:47:24,732 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:47:24,732 - werkzeug - INFO -  * Restarting with stat
+2026-04-14 20:47:25,074 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:47:25,125 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:47:25,151 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:47:25,151 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:47:25,978 - werkzeug - WARNING -  * Debugger is active!
+2026-04-14 20:47:25,981 - werkzeug - INFO -  * Debugger PIN: 948-942-716
+2026-04-14 20:47:26,518 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:55:45,242 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:55:45,264 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:55:45,265 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:55:46,357 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:55:46,357 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:55:46,719 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 20:56:38,772 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 20:56:38,795 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 20:56:38,796 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 20:56:40,073 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 20:56:40,073 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 20:56:40,464 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
+2026-04-14 21:00:25,392 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-14 21:00:25,416 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-14 21:00:25,416 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-14 21:00:26,510 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.175.110:5000
+2026-04-14 21:00:26,510 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-14 21:00:26,865 - mqtt_client - INFO - MQTT connected, subscribing to camera/+/motion
