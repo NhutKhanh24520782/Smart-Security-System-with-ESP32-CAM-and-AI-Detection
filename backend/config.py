@@ -6,8 +6,8 @@ FLASK_PORT = 5000
 FLASK_DEBUG = True
 
 # Telegram bot configuration
-TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'  # Get from @BotFather
-TELEGRAM_CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID'      # Get chat ID from bot
+TELEGRAM_BOT_TOKEN = '8798378490:AAE7timUHd8ZPFWybJox6ODXtNgEs0blrjQ'  # Get from @BotFather
+TELEGRAM_CHAT_ID = '5441757076'      # Get chat ID from bot
 
 # AI Detection configuration
 AI_METHOD = 'opencv'  # Options: 'opencv', 'aws'
@@ -19,10 +19,10 @@ AWS_ACCESS_KEY = 'YOUR_AWS_ACCESS_KEY'
 AWS_SECRET_KEY = 'YOUR_AWS_SECRET_KEY'
 
 # MQTT broker configuration
-MQTT_BROKER_HOST = 'YOUR_MQTT_BROKER_HOST'
-MQTT_BROKER_PORT = 1883
-MQTT_USERNAME = 'YOUR_MQTT_USERNAME'
-MQTT_PASSWORD = 'YOUR_MQTT_PASSWORD'
+MQTT_BROKER_HOST = '47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud'
+MQTT_BROKER_PORT = 8883
+MQTT_USERNAME = 'backend'
+MQTT_PASSWORD = 'Nhutkhanh2025'
 MQTT_TOPIC_FILTER = 'camera/+/motion'
 MQTT_KEEPALIVE = 60
 MQTT_DEBUG = False

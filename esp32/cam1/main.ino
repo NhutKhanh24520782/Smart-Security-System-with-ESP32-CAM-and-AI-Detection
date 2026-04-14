@@ -33,7 +33,7 @@ const char* password = "Nhutkhanh2020";
 
 // MQTT config
 const char* mqttBroker = "47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud";
-const int mqttPort = 1883;
+const int mqttPort = 8883;
 const char* mqttUser = "esp32cam1";
 const char* mqttPassword = "Nhutkhanh2025";
 const char* deviceId = "cam1";
