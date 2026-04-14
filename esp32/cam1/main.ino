@@ -7,7 +7,7 @@
 
 // Pin definitions
 #define PIR_PIN 13        // PIR sensor pin
-#define BUZZER_PIN 12     // Buzzer pin (LOW active)
+#define BUZZER_PIN 14     // Buzzer pin (LOW active)
 
 // Camera pins for ESP32-CAM
 #define PWDN_GPIO_NUM     32
@@ -28,14 +28,14 @@
 #define PCLK_GPIO_NUM     22
 
 // WiFi credentials
-const char* ssid = "YOUR_WIFI_SSID";
-const char* password = "YOUR_WIFI_PASSWORD";
+const char* ssid = "Nhut Khanh";
+const char* password = "Nhutkhanh2020";
 
 // MQTT config
-const char* mqttBroker = "YOUR_MQTT_BROKER_HOST";
+const char* mqttBroker = "47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud";
 const int mqttPort = 1883;
-const char* mqttUser = "YOUR_MQTT_USERNAME";
-const char* mqttPassword = "YOUR_MQTT_PASSWORD";
+const char* mqttUser = "esp32cam1";
+const char* mqttPassword = "Nhutkhanh2025";
 const char* deviceId = "cam1";
 String mqttTopic = String("camera/") + deviceId + "/motion";
 
