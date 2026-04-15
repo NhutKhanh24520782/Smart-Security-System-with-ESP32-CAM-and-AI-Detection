@@ -1,5 +1,3 @@
-import cv2
-import numpy as np
 import boto3
 import logging
 from config import AI_METHOD, CONFIDENCE_THRESHOLD, AWS_REGION, AWS_ACCESS_KEY, AWS_SECRET_KEY
@@ -9,21 +7,10 @@ logger = logging.getLogger(__name__)
 class HumanDetector:
     def __init__(self):
         self.method = AI_METHOD
-        if self.method == 'opencv':
-            self._init_opencv()
-        elif self.method == 'aws':
+        if self.method == 'aws':
             self._init_aws()
-
-    def _init_opencv(self):
-        """Initialize OpenCV Haar cascade classifier for human detection"""
-        # Load Haar cascade for full body detection
-        self.hog = cv2.HOGDescriptor()
-        self.hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
-
-        # Alternative: Haar cascade for upper body
-        # self.cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_upperbody.xml')
-
-        logger.info("OpenCV human detector initialized")
+        else:
+            raise ValueError(f"Unsupported AI method: {self.method}")
 
     def _init_aws(self):
         """Initialize AWS Rekognition client"""
@@ -46,42 +33,13 @@ class HumanDetector:
             tuple: (is_human_detected, confidence_score)
         """
         try:
-            if self.method == 'opencv':
-                return self._detect_opencv(image_bytes)
-            elif self.method == 'aws':
+            if self.method == 'aws':
                 return self._detect_aws(image_bytes)
             else:
                 logger.error(f"Unknown AI method: {self.method}")
                 return False, 0.0
         except Exception as e:
             logger.error(f"Error in human detection: {str(e)}")
-            return False, 0.0
-
-    def _detect_opencv(self, image_bytes):
-        """Detect human using OpenCV HOG descriptor"""
-        # Convert bytes to numpy array
-        nparr = np.frombuffer(image_bytes, np.uint8)
-        image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
-        if image is None:
-            logger.error("Failed to decode image")
-            return False, 0.0
-
-        # Detect people using HOG
-        boxes, weights = self.hog.detectMultiScale(
-            image,
-            winStride=(8, 8),
-            padding=(32, 32),
-            scale=1.05
-        )
-
-        if len(boxes) > 0:
-            # Use the highest confidence detection
-            max_confidence = max(weights) if len(weights) > 0 else 0.0
-            is_detected = max_confidence >= CONFIDENCE_THRESHOLD
-            logger.info(f"OpenCV detection: {len(boxes)} boxes, max confidence: {max_confidence}")
-            return is_detected, float(max_confidence)
-        else:
             return False, 0.0
 
     def _detect_aws(self, image_bytes):

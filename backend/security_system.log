@@ -1271,3 +1271,179 @@ TypeError: can't subtract offset-naive and offset-aware datetimes
 2026-04-15 17:35:58,618 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_103557.jpg
 2026-04-15 17:35:58,618 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
 2026-04-15 17:35:58,626 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-15 18:50:15,337 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-15 18:50:15,356 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-15 18:50:15,357 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-15 18:50:16,653 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.1.104:5002
+2026-04-15 18:50:16,653 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-15 18:50:17,112 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-15 18:50:17,113 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-15 18:50:17,113 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-15 18:51:21,261 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:51:21,261 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-04-15 18:51:21,261 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:51:21,261 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:51:21,262 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:51:21Z
+2026-04-15 18:51:21,262 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:51:21,262 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:51:24,268 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 1/3)
+2026-04-15 18:51:24,769 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 2/3)...
+2026-04-15 18:51:27,776 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 2/3)
+2026-04-15 18:51:28,276 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 3/3)...
+2026-04-15 18:51:31,283 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 3/3)
+2026-04-15 18:51:31,283 - mqtt_client - ERROR -    ❌ Failed to fetch image from cam1 after 3 retries
+2026-04-15 18:51:31,283 - mqtt_client - WARNING - ❌ Failed to fetch image from cam1
+2026-04-15 18:51:37,521 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:51:37,522 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:51:37,522 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:51:37,522 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:51:37Z
+2026-04-15 18:51:37,523 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:51:37,523 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:51:40,528 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 1/3)
+2026-04-15 18:51:41,029 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 2/3)...
+2026-04-15 18:51:44,035 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 2/3)
+2026-04-15 18:51:44,535 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 3/3)...
+2026-04-15 18:51:47,540 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 3/3)
+2026-04-15 18:51:47,540 - mqtt_client - ERROR -    ❌ Failed to fetch image from cam1 after 3 retries
+2026-04-15 18:51:47,541 - mqtt_client - WARNING - ❌ Failed to fetch image from cam1
+2026-04-15 18:51:52,609 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:51:52,610 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:51:52,610 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:51:52,610 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:51:52Z
+2026-04-15 18:51:52,610 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:51:52,610 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:51:55,615 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 1/3)
+2026-04-15 18:51:56,115 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 2/3)...
+2026-04-15 18:51:59,121 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 2/3)
+2026-04-15 18:51:59,621 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 3/3)...
+2026-04-15 18:52:02,625 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 3/3)
+2026-04-15 18:52:02,626 - mqtt_client - ERROR -    ❌ Failed to fetch image from cam1 after 3 retries
+2026-04-15 18:52:02,626 - mqtt_client - WARNING - ❌ Failed to fetch image from cam1
+2026-04-15 18:52:35,631 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-15 18:52:35,648 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-15 18:52:35,648 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-15 18:52:37,166 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.87.175.138:5002
+2026-04-15 18:52:37,166 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-15 18:52:37,478 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-15 18:52:37,478 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-15 18:52:37,478 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-15 18:52:43,103 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:52:43,103 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-04-15 18:52:43,104 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:52:43,104 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:52:43,104 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:52:42Z
+2026-04-15 18:52:43,104 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:52:43,104 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:52:43,343 - mqtt_client - INFO -    ✅ Image fetched: 6073 bytes
+2026-04-15 18:52:43,344 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115242.jpg
+2026-04-15 18:52:43,344 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:52:46,580 - ai.detect - INFO - AWS detection: confidence: 0.9669486236572266
+2026-04-15 18:52:46,580 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=0.97)
+2026-04-15 18:52:46,580 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-15 18:52:46,580 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-15 18:52:58,366 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-15 18:52:58,367 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:52:58,367 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:52:58,367 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:52:58,367 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:52:57Z
+2026-04-15 18:52:58,367 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:52:58,368 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:52:58,711 - mqtt_client - INFO -    ✅ Image fetched: 6573 bytes
+2026-04-15 18:52:58,714 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115257.jpg
+2026-04-15 18:52:58,714 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:52:59,224 - ai.detect - INFO - AWS detection: confidence: 0.9673387145996094
+2026-04-15 18:52:59,225 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=0.97)
+2026-04-15 18:52:59,225 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-15 18:53:12,668 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:53:12,668 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:53:12,668 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:53:12,669 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:53:12Z
+2026-04-15 18:53:12,669 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:53:12,669 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:53:12,837 - mqtt_client - INFO -    ✅ Image fetched: 4045 bytes
+2026-04-15 18:53:12,838 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115312.jpg
+2026-04-15 18:53:12,838 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:53:13,398 - ai.detect - INFO - AWS detection: confidence: 1.0
+2026-04-15 18:53:13,398 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=1.00)
+2026-04-15 18:53:13,398 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-15 18:53:13,398 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-15 18:53:24,992 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-15 18:53:27,701 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:53:27,701 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:53:27,701 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:53:27,702 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:53:27Z
+2026-04-15 18:53:27,702 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:53:27,702 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:53:28,003 - mqtt_client - INFO -    ✅ Image fetched: 4375 bytes
+2026-04-15 18:53:28,004 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115327.jpg
+2026-04-15 18:53:28,004 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:53:28,511 - ai.detect - INFO - AWS detection: confidence: 0.0
+2026-04-15 18:53:28,512 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-15 18:53:42,811 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:53:42,812 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:53:42,812 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:53:42,812 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:53:42Z
+2026-04-15 18:53:42,812 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:53:42,812 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:53:43,001 - mqtt_client - INFO -    ✅ Image fetched: 5443 bytes
+2026-04-15 18:53:43,002 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115342.jpg
+2026-04-15 18:53:43,002 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:53:43,538 - ai.detect - INFO - AWS detection: confidence: 0.5439392852783204
+2026-04-15 18:53:43,539 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=0.54)
+2026-04-15 18:53:43,539 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-15 18:53:43,539 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-15 18:53:54,921 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-15 18:53:57,874 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:53:57,874 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:53:57,875 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:53:57,875 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:53:57Z
+2026-04-15 18:53:57,875 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:53:57,875 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:53:58,168 - mqtt_client - INFO -    ✅ Image fetched: 6559 bytes
+2026-04-15 18:53:58,169 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115357.jpg
+2026-04-15 18:53:58,170 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:53:58,753 - ai.detect - INFO - AWS detection: confidence: 0.9937236022949218
+2026-04-15 18:53:58,753 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=0.99)
+2026-04-15 18:53:58,753 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-15 18:54:16,709 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:54:16,709 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:54:16,709 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:54:16,709 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:54:16Z
+2026-04-15 18:54:16,709 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:54:16,709 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:54:17,005 - mqtt_client - INFO -    ✅ Image fetched: 6559 bytes
+2026-04-15 18:54:17,006 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115416.jpg
+2026-04-15 18:54:17,006 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:54:17,636 - ai.detect - INFO - AWS detection: confidence: 0.0
+2026-04-15 18:54:17,636 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-15 18:54:31,662 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-15 18:54:31,662 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-15 18:54:31,662 - mqtt_client - INFO -    ESP32 IP: 10.87.175.144
+2026-04-15 18:54:31,662 - mqtt_client - INFO -    Timestamp: 2026-04-15T11:54:31Z
+2026-04-15 18:54:31,662 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-15 18:54:31,662 - mqtt_client - INFO -    🔗 HTTP GET http://10.87.175.144:80/capture (attempt 1/3)...
+2026-04-15 18:54:31,950 - mqtt_client - INFO -    ✅ Image fetched: 3744 bytes
+2026-04-15 18:54:31,950 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260415_115431.jpg
+2026-04-15 18:54:31,951 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-15 18:54:32,789 - ai.detect - INFO - AWS detection: confidence: 0.6641177368164063
+2026-04-15 18:54:32,789 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=0.66)
+2026-04-15 18:54:32,789 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-15 18:54:32,789 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-15 18:54:44,213 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-15 19:21:52,321 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-15 19:21:52,337 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-15 19:21:52,337 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-15 19:21:53,928 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.87.175.138:5002
+2026-04-15 19:21:53,928 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-15 19:21:54,310 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-15 19:21:54,311 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-15 19:21:54,311 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...

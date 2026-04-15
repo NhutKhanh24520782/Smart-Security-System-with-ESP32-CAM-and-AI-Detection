@@ -10,13 +10,13 @@ TELEGRAM_BOT_TOKEN = '8798378490:AAE7timUHd8ZPFWybJox6ODXtNgEs0blrjQ'  # Get fro
 TELEGRAM_CHAT_ID = '5441757076'      # Get chat ID from bot
 
 # AI Detection configuration
-AI_METHOD = 'opencv'  # Options: 'opencv', 'aws'
+AI_METHOD = 'aws'  # Options: 'opencv', 'aws'
 CONFIDENCE_THRESHOLD = 0.5  # Minimum confidence for detection
 
 # AWS Rekognition (if using AWS)
 AWS_REGION = 'us-east-1'
-AWS_ACCESS_KEY = 'YOUR_AWS_ACCESS_KEY'
-AWS_SECRET_KEY = 'YOUR_AWS_SECRET_KEY'
+AWS_ACCESS_KEY = 'AKIAXCRJJAXM77V7ZAMA'
+AWS_SECRET_KEY = '7ReuOAgDUj1+wUt1Nzth7+/C50b3gCIjOYKQuK+Z'
 
 # MQTT broker configuration
 MQTT_BROKER_HOST = '47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud'
