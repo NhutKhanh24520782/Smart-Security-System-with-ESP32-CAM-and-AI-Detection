@@ -9,7 +9,7 @@ class MultiCameraCoordinator:
     def __init__(self):
         self.events = {}  # {device_id: {'timestamp': datetime, 'confidence': float}}
         self.history = deque(maxlen=DETECTION_HISTORY_SIZE)
-        self.last_alert_time = datetime.min
+        self.last_alert_time = datetime.min.replace(tzinfo=None)  # offset-naive
         self.last_alert_signature = None
 
     def add_detection(self, device_id, timestamp, confidence):
@@ -72,6 +72,12 @@ class MultiCameraCoordinator:
         return None
 
     def _should_send_alert(self, signature, current_time):
+        # Ensure both datetimes are offset-naive to avoid comparison errors
+        if hasattr(current_time, 'tzinfo') and current_time.tzinfo is not None:
+            current_time = current_time.replace(tzinfo=None)
+        if hasattr(self.last_alert_time, 'tzinfo') and self.last_alert_time.tzinfo is not None:
+            self.last_alert_time = self.last_alert_time.replace(tzinfo=None)
+            
         if self.last_alert_signature == signature and (
             (current_time - self.last_alert_time).total_seconds() < ALERT_COOLDOWN_SECONDS
         ):

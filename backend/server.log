@@ -1,0 +1,7 @@
+2026-04-15 08:55:05,523 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-15 08:55:05,568 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-15 08:55:05,568 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5002 is in use by another program. Either identify and stop that program, or start the server with a different port.

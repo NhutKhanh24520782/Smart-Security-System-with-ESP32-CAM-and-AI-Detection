@@ -48,6 +48,11 @@ const unsigned long debounceDelay = 2000;   // 2 seconds debounce
 unsigned long pirHighStart = 0;
 bool pirStable = false;
 
+// 🔍 PIR debug variables
+unsigned long lastPirDebugTime = 0;
+const unsigned long pirDebugInterval = 5000;  // Log PIR state every 5 sec
+int lastPirState = -1;  // Track last state for change detection
+
 WiFiClientSecure wifiClient;
 PubSubClient mqttClient(wifiClient);
 WebServer server(80);  // ✅ HTTP server port 80
@@ -227,16 +232,104 @@ void captureAndSend() {
   digitalWrite(BUZZER_PIN, HIGH);
   Serial.println("   Buzzer pulsed");
 
-  // MQTT publish
-  Serial.println("   Publishing motion event to MQTT...");
-  publishMotionEvent();
+  // Capture image
+  Serial.println("   Capturing image...");
+  camera_fb_t *fb = esp_camera_fb_get();
+  if (!fb) {
+    Serial.println("❌ Failed to capture frame");
+    publishMotionEvent();  // Fallback: publish MQTT only
+    return;
+  }
+  Serial.printf("   ✅ Image captured: %d bytes\n", fb->len);
   
-  Serial.println("🔴 Motion event sent to MQTT");
+  // POST image to backend
+  Serial.println("   Uploading image to backend via HTTP POST...");
+  bool upload_success = uploadImageToBackend(fb);
+  esp_camera_fb_return(fb);
+  
+  if (!upload_success) {
+    Serial.println("   ⚠️  HTTP POST failed, publishing MQTT event only");
+    publishMotionEvent();
+  }
+  
+  Serial.println("🔴 Motion event handled");
+}
+
+bool uploadImageToBackend(camera_fb_t *fb) {
+  if (!fb || fb->len == 0) {
+    Serial.println("❌ Invalid frame buffer");
+    return false;
+  }
+  
+  WiFiClient client;
+  const char* backend_host = "10.45.105.228";  // Backend IP
+  const int backend_port = 5002;                 // Backend port
+  
+  if (!client.connect(backend_host, backend_port)) {
+    Serial.printf("❌ Failed to connect to backend %s:%d\n", backend_host, backend_port);
+    return false;
+  }
+  
+  Serial.printf("✅ Connected to backend %s:%d\n", backend_host, backend_port);
+  
+  // Build multipart form data
+  String boundary = "----FormBoundary7MA4YWxkTrZu0gW";
+  String body = "--" + boundary + "\r\n";
+  body += "Content-Disposition: form-data; name=\"device_id\"\r\n\r\n";
+  body += String(deviceId) + "\r\n";
+  body += "--" + boundary + "\r\n";
+  body += "Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n";
+  body += "Content-Type: image/jpeg\r\n\r\n";
+  
+  // Send HTTP POST header
+  String header = String("POST /upload HTTP/1.1\r\n") +
+                  "Host: " + backend_host + ":" + backend_port + "\r\n" +
+                  "Content-Type: multipart/form-data; boundary=" + boundary + "\r\n" +
+                  "Content-Length: " + (body.length() + fb->len + boundary.length() + 16) + "\r\n" +
+                  "Connection: close\r\n\r\n";
+  
+  client.print(header);
+  client.print(body);
+  client.write(fb->buf, fb->len);
+  String footer = "\r\n--" + boundary + "--\r\n";
+  client.print(footer);
+  
+  Serial.print("📤 Uploading ");
+  Serial.print(fb->len);
+  Serial.println(" bytes...");
+  
+  // Read response
+  unsigned long timeout = millis() + 10000;  // 10 second timeout
+  while (client.connected() && millis() < timeout) {
+    if (client.available()) {
+      String line = client.readStringUntil('\n');
+      if (line.indexOf("200") > 0) {
+        Serial.println("✅ Upload successful (HTTP 200)");
+        client.stop();
+        return true;
+      }
+    }
+  }
+  
+  if (millis() >= timeout) {
+    Serial.println("⚠️  Upload response timeout");
+  }
+  
+  client.stop();
+  return false;
 }
 
 void setup() {
   Serial.begin(115200);
+  delay(100);
+  Serial.println("\n\n🔴==== ESP32-CAM STARTING ====");
+  
+  // 🔍 Setup PIR with debug
   pinMode(PIR_PIN, INPUT);
+  Serial.printf("🔍 PIR_PIN %d initialized as INPUT\n", PIR_PIN);
+  int initialPirState = digitalRead(PIR_PIN);
+  Serial.printf("🔍 Initial PIR state: %d (0=LOW/no motion, 1=HIGH/motion detected)\n", initialPirState);
+  
   pinMode(BUZZER_PIN, OUTPUT);
   digitalWrite(BUZZER_PIN, HIGH);
   pinMode(FLASH_LED_PIN, OUTPUT);
@@ -278,14 +371,29 @@ void loop() {
   unsigned long currentTime = millis();
   int pirState = digitalRead(PIR_PIN);
 
+  // 🔍 Debug: Log PIR state changes immediately
+  if (pirState != lastPirState) {
+    Serial.printf("📍 PIR STATE CHANGED: %d -> %d (at %lu ms)\n", lastPirState, pirState, currentTime);
+    lastPirState = pirState;
+  }
+  
+  // 🔍 Debug: Periodic PIR state log
+  if (currentTime - lastPirDebugTime >= pirDebugInterval) {
+    Serial.printf("🔍 [%lu ms] PIR state: %d, pirStable: %s, debounceWaiting: %lu ms\n", 
+      currentTime, pirState, pirStable ? "true" : "false",
+      pirStable ? (currentTime - pirHighStart) : 0);
+    lastPirDebugTime = currentTime;
+  }
+
   if (pirState == HIGH) {
     if (!pirStable) {
       pirHighStart = currentTime;
       pirStable = true;
-      Serial.println("📍 PIR triggered (waiting for debounce)");
+      Serial.printf("📍 PIR HIGH detected at %lu ms (waiting %lu ms for debounce)\n", currentTime, debounceDelay);
     } else if (currentTime - pirHighStart >= debounceDelay) {
+      Serial.printf("✅ Debounce passed: %lu ms elapsed\n", currentTime - pirHighStart);
       if (currentTime - lastTriggerTime >= cooldownPeriod) {
-        Serial.println("🔴 Motion detected!");
+        Serial.println("🔴 Motion detected! Triggering capture...");
         captureAndSend();
         lastTriggerTime = currentTime;
       } else {
@@ -295,7 +403,7 @@ void loop() {
     }
   } else {
     if (pirStable) {
-      Serial.println("📍 PIR released");
+      Serial.printf("📍 PIR released at %lu ms (was stable for %lu ms)\n", currentTime, currentTime - pirHighStart);
       pirStable = false;
     }
   }

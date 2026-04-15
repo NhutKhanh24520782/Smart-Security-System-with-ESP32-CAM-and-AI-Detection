@@ -2,7 +2,7 @@
 
 # Flask server configuration
 FLASK_HOST = '0.0.0.0'
-FLASK_PORT = 5000
+FLASK_PORT = 5002
 FLASK_DEBUG = False  # Disable debug mode to prevent restart loop from log/image writes
 
 # Telegram bot configuration

@@ -21,6 +21,7 @@ class MqttBackendClient:
         self.client.username_pw_set(MQTT_USERNAME, MQTT_PASSWORD)
         self.last_message_id = None  # Prevent duplicate processing
         self.duplicate_window = 1.0  # 1 second window to detect duplicates
+        self.connected_esp32_devices = set()  # Track connected ESP32 devices
         
         # Enable TLS for secure connection (port 8883)
         if MQTT_BROKER_PORT == 8883:
@@ -40,13 +41,19 @@ class MqttBackendClient:
 
     def _on_connect(self, client, userdata, flags, rc):
         if rc == 0:
-            logger.info(f"MQTT connected, subscribing to {MQTT_TOPIC_FILTER}")
-            self.client.subscribe(MQTT_TOPIC_FILTER)
+            logger.info(f"✅ MQTT connected successfully to {MQTT_BROKER_HOST}:{MQTT_BROKER_PORT}")
+            result = self.client.subscribe(MQTT_TOPIC_FILTER)
+            if result[0] == mqtt.MQTT_ERR_SUCCESS:
+                logger.info(f"📡 MQTT subscribed to topic pattern: {MQTT_TOPIC_FILTER}")
+                logger.info(f"   Waiting for motion events from ESP32 cameras...")
+            else:
+                logger.warning(f"   Subscribe failed with result: {result}")
         else:
-            logger.error(f"MQTT connection failed with rc={rc}")
+            logger.error(f"❌ MQTT connection failed with rc={rc}")
 
     def _on_disconnect(self, client, userdata, rc):
-        logger.warning(f"MQTT disconnected, rc={rc}")
+        logger.warning(f"⚠️  MQTT disconnected (rc={rc})")
+        self.connected_esp32_devices.clear()
 
     def _on_message(self, client, userdata, msg):
         try:
@@ -77,10 +84,16 @@ class MqttBackendClient:
                 logger.debug(f"Motion is false for {device_id}, skipping")
                 return
 
-            logger.info(f"🔴 Motion event from {device_id}")
+            # Track ESP32 device
+            if device_id not in self.connected_esp32_devices:
+                self.connected_esp32_devices.add(device_id)
+                logger.info(f"🔌 New ESP32 device detected: {device_id}")
+
+            logger.info(f"🔴 Motion event received from {device_id}")
             esp32_ip = data.get("ip")
             if esp32_ip:
-                logger.info(f"   Device IP: {esp32_ip}")
+                logger.info(f"   ESP32 IP: {esp32_ip}")
+            logger.info(f"   Timestamp: {timestamp_str}")
             
             logger.info(f"🔴 Fetching image via HTTP from {device_id}...")
             

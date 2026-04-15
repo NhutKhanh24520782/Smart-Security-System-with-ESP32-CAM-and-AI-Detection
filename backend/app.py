@@ -30,6 +30,32 @@ if SAVE_IMAGES and not os.path.exists(IMAGE_SAVE_PATH):
     os.makedirs(IMAGE_SAVE_PATH)
 
 coordinator = MultiCameraCoordinator()
+mqtt_client_instance = None
+
+@app.route('/status', methods=['GET'])
+def get_status():
+    """Get backend status including MQTT connection and connected ESP32 devices"""
+    mqtt_connected = False
+    esp32_devices = []
+    
+    if mqtt_client_instance:
+        mqtt_connected = mqtt_client_instance.client.is_connected()
+        esp32_devices = list(mqtt_client_instance.connected_esp32_devices)
+    
+    return jsonify({
+        'status': 'online',
+        'service': 'Smart Security System Backend',
+        'version': '1.0.0',
+        'mqtt': {
+            'connected': mqtt_connected,
+            'broker': os.environ.get('MQTT_BROKER_HOST', 'configured'),
+            'subscribed_topic': 'camera/+/motion'
+        },
+        'esp32_devices': {
+            'total': len(esp32_devices),
+            'devices': esp32_devices
+        }
+    }), 200
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
@@ -93,11 +119,13 @@ def index():
         'version': '1.0.0',
         'endpoints': {
             'upload': '/upload (POST)',
-            'health': '/health (GET)'
+            'health': '/health (GET)',
+            'status': '/status (GET)',
+            'root': '/ (GET)'
         }
     }), 200
 
 if __name__ == '__main__':
     logger.info("Starting Smart Security System Backend")
-    init_mqtt(coordinator)
+    mqtt_client_instance = init_mqtt(coordinator)
     app.run(host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG, use_reloader=False)
