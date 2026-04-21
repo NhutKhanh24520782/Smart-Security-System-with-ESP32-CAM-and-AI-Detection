@@ -15,8 +15,15 @@ CONFIDENCE_THRESHOLD = 0.5  # Minimum confidence for detection
 
 # AWS Rekognition (if using AWS)
 AWS_REGION = 'us-east-1'
-AWS_ACCESS_KEY = 'AKIAXCRJJAXM77V7ZAMA'
-AWS_SECRET_KEY = '7ReuOAgDUj1+wUt1Nzth7+/C50b3gCIjOYKQuK+Z'
+AWS_ACCESS_KEY = 'AKIAXCRJJAXMZ7X5F7OU'  # Replace with real key
+AWS_SECRET_KEY = 'Wiw2IHXSGEb4lh9fHuGIBsoQbMersOp5c4emfCc5'  # Replace with real secret
+
+# AWS Rekognition Face Recognition settings
+AWS_FACE_COLLECTION_ID = 'smart-security-collection'  # Rekognition collection for known faces
+AWS_FACE_MATCH_THRESHOLD = 80.0  # Confidence threshold for face matching (0-100)
+AWS_FACE_SIMILARITY_THRESHOLD = 80.0  # Similarity threshold for search_faces_by_image (0-100)
+AWS_KNOWN_FACES_DB = 'known_faces.json'  # Local JSON file for faceId <-> name mapping
+AWS_UNKNOWN_FACES_DIR = 'unknown_faces/'  # Directory to save unknown faces for review
 
 # MQTT broker configuration
 MQTT_BROKER_HOST = '47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud'

@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import logging
 import os
 from datetime import datetime
-from ai.detect import detect_human
+from ai.detect import detect_and_recognize_faces
 from services.telegram import send_alert
 from coordination.coordinator import MultiCameraCoordinator
 from mqtt_client import init_mqtt
@@ -85,7 +85,14 @@ def upload_image():
 
         # Perform human detection
         logger.info(f"Processing image from {device_id}")
-        human_detected, confidence = detect_human(image_bytes)
+        detection_result = detect_and_recognize_faces(image_bytes)
+        
+        # Extract human_detected and confidence from new format
+        human_detected = detection_result.get('human_detected', False)
+        # Use highest confidence face as overall confidence
+        confidence = 0.0
+        if detection_result.get('faces'):
+            confidence = max(face.get('confidence', 0.0) for face in detection_result['faces'])
 
         if human_detected:
             logger.info(f"Human detected by {device_id} (confidence={confidence}), sending alert")
@@ -95,11 +102,17 @@ def upload_image():
         else:
             logger.info(f"No human detected in image from {device_id}")
 
+        # Send face-specific alerts using new system
+        from ai.telegram_alerts import handle_detection_alert
+        handle_detection_alert(detection_result, device_id)
+
         return jsonify({
             'status': 'success',
             'device_id': device_id,
             'human_detected': human_detected,
-            'timestamp': timestamp
+            'confidence': confidence,
+            'timestamp': timestamp,
+            'faces': detection_result.get('faces', [])
         }), 200
 
     except Exception as e:
