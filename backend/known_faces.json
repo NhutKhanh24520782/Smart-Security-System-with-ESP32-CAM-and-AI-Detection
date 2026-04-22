@@ -6,7 +6,12 @@
   },
   "dc7da3d7-1f30-42d9-9368-e0c2f32efed5": {
     "name": "LamKhanh",
-    "registered_at": "2026-04-22T10:50:42.231421",
+    "registered_at": "2026-04-22T11:12:04.927578",
     "confidence": 99.9988784790039
+  },
+  "9fe3e0ca-d06a-48e6-93f3-ae7b9adac593": {
+    "name": "Phat",
+    "registered_at": "2026-04-22T11:12:17.519571",
+    "confidence": 99.99959564208984
   }
 }
