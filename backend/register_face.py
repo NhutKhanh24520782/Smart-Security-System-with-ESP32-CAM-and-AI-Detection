@@ -2,8 +2,8 @@
 from ai.detect import FaceRecognitionManager
 
 # 🔄 THAY ĐỔI TÊN FILE ẢNH Ở ĐÂY:
-test_image = 'test_image_20260414_200405.jpg'  # ← Thay tên file ảnh muốn đăng ký
-person_name = 'Khanh'  # ← Thay tên người
+test_image = '2456525542433932251.jpg'  # ← Thay tên file ảnh muốn đăng ký
+person_name = 'LamKhanh'  # ← Thay tên người
 
 print(f"🔍 Đăng ký khuôn mặt từ ảnh: {test_image}")
 print(f"   Tên: {person_name}")

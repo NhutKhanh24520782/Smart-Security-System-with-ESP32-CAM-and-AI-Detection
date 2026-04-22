@@ -15,7 +15,7 @@ class FaceAlertManager:
     """Manages Telegram alerts based on face detection results"""
     
     def __init__(self):
-        self.telegram = TelegramBot(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID)
+        self.telegram = TelegramBot()
         self.last_unknown_face_time = {}  # Track last unknown face alert per camera
         self.alert_cooldown_seconds = 30  # Don't spam alerts
     

@@ -1458,3 +1458,290 @@ TypeError: can't subtract offset-naive and offset-aware datetimes
 2026-04-20 09:51:02,322 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
 2026-04-20 09:51:02,322 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
 2026-04-20 09:51:02,322 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-22 10:31:41,198 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-22 10:31:41,215 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-22 10:31:41,216 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:31:42,716 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.138:5002
+2026-04-22 10:31:42,716 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:31:43,225 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:31:43,226 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-22 10:31:43,226 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-22 10:32:13,633 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:32:13,634 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-04-22 10:32:13,634 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:32:13,634 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:32:13,634 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:32:11Z
+2026-04-22 10:32:13,634 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:32:13,634 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:32:15,688 - mqtt_client - INFO -    ✅ Image fetched: 5408 bytes
+2026-04-22 10:32:15,688 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_033211.jpg
+2026-04-22 10:32:15,688 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:32:15,729 - ai.detect - INFO - AWS Rekognition client initialized
+2026-04-22 10:32:15,730 - ai.detect - INFO - Directories initialized: unknown_faces/
+2026-04-22 10:32:15,732 - ai.detect - INFO - Loaded 1 known faces from database
+2026-04-22 10:32:18,056 - ai.detect - INFO - No faces detected in image
+2026-04-22 10:32:18,056 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-22 10:32:18,059 - mqtt_client - ERROR - ❌ Failed to handle MQTT message: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py)
+Traceback (most recent call last):
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/mqtt_client.py", line 128, in _on_message
+    from ai.telegram_alerts import handle_detection_alert
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/ai/telegram_alerts.py", line 9, in <module>
+    from services.telegram import TelegramBot
+ImportError: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py). Did you mean: 'telegram'?
+2026-04-22 10:33:10,893 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:33:10,893 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:33:10,893 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:33:10,893 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:33:08Z
+2026-04-22 10:33:10,893 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:33:10,893 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:33:11,852 - mqtt_client - INFO -    ✅ Image fetched: 4705 bytes
+2026-04-22 10:33:11,852 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_033308.jpg
+2026-04-22 10:33:11,852 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:33:13,175 - ai.detect - INFO - Detected 2 face(s)
+2026-04-22 10:33:13,732 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:33:13,732 - ai.detect - INFO - Face 1: UNKNOWN
+2026-04-22 10:33:13,732 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_103313_face_0_conf_99.jpg
+2026-04-22 10:33:14,345 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:33:14,345 - ai.detect - INFO - Face 2: UNKNOWN
+2026-04-22 10:33:14,345 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_103314_face_1_conf_100.jpg
+2026-04-22 10:33:14,345 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-04-22 10:33:14,345 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-22 10:33:14,345 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-22 10:33:18,603 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-22 10:33:18,604 - mqtt_client - ERROR - ❌ Failed to handle MQTT message: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py)
+Traceback (most recent call last):
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/mqtt_client.py", line 128, in _on_message
+    from ai.telegram_alerts import handle_detection_alert
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/ai/telegram_alerts.py", line 9, in <module>
+    from services.telegram import TelegramBot
+ImportError: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py). Did you mean: 'telegram'?
+2026-04-22 10:33:27,239 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:33:27,239 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:33:27,239 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:33:27,239 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:33:26Z
+2026-04-22 10:33:27,239 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:33:27,239 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:33:27,786 - mqtt_client - INFO -    ✅ Image fetched: 7882 bytes
+2026-04-22 10:33:27,787 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_033326.jpg
+2026-04-22 10:33:27,787 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:33:28,888 - ai.detect - INFO - Detected 3 face(s)
+2026-04-22 10:33:31,863 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:33:31,863 - ai.detect - INFO - Face 1: UNKNOWN
+2026-04-22 10:33:31,864 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_103331_face_0_conf_99.jpg
+2026-04-22 10:33:33,206 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:33:33,206 - ai.detect - INFO - Face 2: UNKNOWN
+2026-04-22 10:33:33,206 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_103333_face_1_conf_73.jpg
+2026-04-22 10:33:35,145 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:33:35,145 - ai.detect - INFO - Face 3: UNKNOWN
+2026-04-22 10:33:35,146 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_103335_face_2_conf_90.jpg
+2026-04-22 10:33:35,146 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=99.10)
+2026-04-22 10:33:35,146 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-22 10:33:35,147 - mqtt_client - ERROR - ❌ Failed to handle MQTT message: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py)
+Traceback (most recent call last):
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/mqtt_client.py", line 128, in _on_message
+    from ai.telegram_alerts import handle_detection_alert
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/ai/telegram_alerts.py", line 9, in <module>
+    from services.telegram import TelegramBot
+ImportError: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py). Did you mean: 'telegram'?
+2026-04-22 10:34:22,977 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:34:22,977 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:34:22,977 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:34:22,977 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:34:21Z
+2026-04-22 10:34:22,977 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:34:22,977 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:34:23,318 - mqtt_client - INFO -    ✅ Image fetched: 7825 bytes
+2026-04-22 10:34:23,319 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_033421.jpg
+2026-04-22 10:34:23,320 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:34:23,893 - ai.detect - INFO - No faces detected in image
+2026-04-22 10:34:23,893 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-22 10:34:23,894 - mqtt_client - ERROR - ❌ Failed to handle MQTT message: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py)
+Traceback (most recent call last):
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/mqtt_client.py", line 128, in _on_message
+    from ai.telegram_alerts import handle_detection_alert
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/ai/telegram_alerts.py", line 9, in <module>
+    from services.telegram import TelegramBot
+ImportError: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py). Did you mean: 'telegram'?
+2026-04-22 10:39:46,847 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-22 10:39:46,865 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-22 10:39:46,865 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:39:47,995 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.138:5002
+2026-04-22 10:39:47,995 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:39:48,359 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:39:48,360 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-22 10:39:48,361 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-22 10:39:59,185 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:39:59,185 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-04-22 10:39:59,185 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:39:59,186 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:39:59,186 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:39:58Z
+2026-04-22 10:39:59,186 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:39:59,186 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:39:59,677 - mqtt_client - INFO -    ✅ Image fetched: 7825 bytes
+2026-04-22 10:39:59,678 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_033958.jpg
+2026-04-22 10:39:59,678 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:39:59,714 - ai.detect - INFO - AWS Rekognition client initialized
+2026-04-22 10:39:59,714 - ai.detect - INFO - Directories initialized: unknown_faces/
+2026-04-22 10:39:59,714 - ai.detect - INFO - Loaded 2 known faces from database
+2026-04-22 10:40:02,946 - ai.detect - INFO - No faces detected in image
+2026-04-22 10:40:02,946 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-22 10:40:02,946 - mqtt_client - ERROR - ❌ Failed to handle MQTT message: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py)
+Traceback (most recent call last):
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/mqtt_client.py", line 128, in _on_message
+    from ai.telegram_alerts import handle_detection_alert
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/ai/telegram_alerts.py", line 9, in <module>
+    from services.telegram import TelegramBot
+ImportError: cannot import name 'TelegramBot' from 'services.telegram' (/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/services/telegram.py). Did you mean: 'telegram'?
+2026-04-22 10:47:50,898 - mqtt_client - WARNING - ⚠️  MQTT disconnected (rc=7)
+2026-04-22 10:47:55,611 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:47:55,612 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-22 10:47:55,612 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-22 10:51:04,376 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-22 10:51:04,390 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-22 10:51:04,390 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:51:05,465 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.138:5002
+2026-04-22 10:51:05,466 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:51:05,985 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:51:05,986 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-22 10:51:05,986 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-22 10:51:20,947 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:51:20,948 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-04-22 10:51:20,948 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:51:20,948 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:51:20,948 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:51:20Z
+2026-04-22 10:51:20,948 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:51:20,949 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:51:21,867 - mqtt_client - INFO -    ✅ Image fetched: 6637 bytes
+2026-04-22 10:51:21,868 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_035120.jpg
+2026-04-22 10:51:21,868 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:51:21,902 - ai.detect - INFO - AWS Rekognition client initialized
+2026-04-22 10:51:21,902 - ai.detect - INFO - Directories initialized: unknown_faces/
+2026-04-22 10:51:21,902 - ai.detect - INFO - Loaded 2 known faces from database
+2026-04-22 10:51:23,401 - ai.detect - INFO - Detected 2 face(s)
+2026-04-22 10:51:23,815 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:51:23,815 - ai.detect - INFO - Face 1: UNKNOWN
+2026-04-22 10:51:23,816 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_105123_face_0_conf_100.jpg
+2026-04-22 10:51:24,357 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:51:24,357 - ai.detect - INFO - Face 2: UNKNOWN
+2026-04-22 10:51:24,357 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_105124_face_1_conf_99.jpg
+2026-04-22 10:51:24,358 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=99.98)
+2026-04-22 10:51:24,358 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-22 10:51:24,358 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-22 10:51:26,198 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-22 10:51:26,201 - mqtt_client - ERROR - ❌ Failed to handle MQTT message: 'TelegramBot' object has no attribute 'send_message'
+Traceback (most recent call last):
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/mqtt_client.py", line 129, in _on_message
+    handle_detection_alert(detection_result, device_id)
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/ai/telegram_alerts.py", line 147, in handle_detection_alert
+    return alert_manager.handle_detection_result(detection_result, camera_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/khoahocit/Downloads/Smart-Security-System-with-ESP32-CAM-and-AI-Detection/backend/ai/telegram_alerts.py", line 51, in handle_detection_result
+    if self.telegram.send_message(alert['message'], alert.get('emoji')):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'TelegramBot' object has no attribute 'send_message'. Did you mean: '_send_message'?
+2026-04-22 10:52:37,851 - __main__ - INFO - Starting Smart Security System Backend
+2026-04-22 10:52:37,866 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-04-22 10:52:37,866 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:52:39,115 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.138:5002
+2026-04-22 10:52:39,115 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:52:39,613 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-04-22 10:52:39,613 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-04-22 10:52:39,613 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-04-22 10:52:47,732 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:52:47,733 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-04-22 10:52:47,733 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:52:47,733 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:52:47,733 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:52:47Z
+2026-04-22 10:52:47,734 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:52:47,734 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:52:48,332 - mqtt_client - INFO -    ✅ Image fetched: 6729 bytes
+2026-04-22 10:52:48,333 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_035247.jpg
+2026-04-22 10:52:48,335 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:52:48,371 - ai.detect - INFO - AWS Rekognition client initialized
+2026-04-22 10:52:48,371 - ai.detect - INFO - Directories initialized: unknown_faces/
+2026-04-22 10:52:48,371 - ai.detect - INFO - Loaded 2 known faces from database
+2026-04-22 10:52:50,162 - ai.detect - INFO - Detected 2 face(s)
+2026-04-22 10:52:50,567 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:52:50,567 - ai.detect - INFO - Face 1: UNKNOWN
+2026-04-22 10:52:50,568 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_105250_face_0_conf_100.jpg
+2026-04-22 10:52:51,009 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:52:51,010 - ai.detect - INFO - Face 2: UNKNOWN
+2026-04-22 10:52:51,010 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_105251_face_1_conf_100.jpg
+2026-04-22 10:52:51,010 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=99.99)
+2026-04-22 10:52:51,011 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-22 10:52:51,011 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-22 10:52:52,823 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-22 10:52:54,478 - ai.telegram_alerts - INFO - Alert sent: UNKNOWN_PERSON
+2026-04-22 10:53:17,802 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:53:17,802 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:53:17,802 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:53:17,802 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:53:17Z
+2026-04-22 10:53:17,802 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:53:17,803 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:53:19,255 - mqtt_client - INFO -    ✅ Image fetched: 6075 bytes
+2026-04-22 10:53:19,255 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_035317.jpg
+2026-04-22 10:53:19,255 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:53:19,731 - ai.detect - INFO - Detected 1 face(s)
+2026-04-22 10:53:20,286 - ai.detect - INFO - Face matched: Khanh (confidence: 99.94699096679688%)
+2026-04-22 10:53:20,286 - ai.detect - INFO - Face 1: KNOWN - Khanh
+2026-04-22 10:53:20,286 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-04-22 10:53:20,286 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-22 10:53:20,286 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-22 10:53:22,308 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-22 10:53:23,894 - ai.telegram_alerts - INFO - Alert sent: KNOWN_PERSON
+2026-04-22 10:53:46,930 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:53:46,931 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:53:46,931 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:53:46,931 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:53:46Z
+2026-04-22 10:53:46,931 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:53:46,931 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:53:48,023 - mqtt_client - INFO -    ✅ Image fetched: 4450 bytes
+2026-04-22 10:53:48,023 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_035346.jpg
+2026-04-22 10:53:48,023 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:53:48,429 - ai.detect - INFO - Detected 1 face(s)
+2026-04-22 10:53:48,981 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:53:48,982 - ai.detect - INFO - Face 1: UNKNOWN
+2026-04-22 10:53:48,982 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_105348_face_0_conf_100.jpg
+2026-04-22 10:53:48,982 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-04-22 10:53:48,982 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-22 10:53:50,569 - ai.telegram_alerts - INFO - Alert sent: UNKNOWN_PERSON
+2026-04-22 10:54:06,424 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:54:06,424 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:54:06,425 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:54:06,425 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:54:05Z
+2026-04-22 10:54:06,425 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:54:06,425 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:54:07,050 - mqtt_client - INFO -    ✅ Image fetched: 5038 bytes
+2026-04-22 10:54:07,051 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_035405.jpg
+2026-04-22 10:54:07,051 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:54:07,552 - ai.detect - INFO - No faces detected in image
+2026-04-22 10:54:07,552 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-04-22 10:54:24,635 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-04-22 10:54:24,636 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-04-22 10:54:24,636 - mqtt_client - INFO -    ESP32 IP: 192.168.10.155
+2026-04-22 10:54:24,636 - mqtt_client - INFO -    Timestamp: 2026-04-22T03:54:24Z
+2026-04-22 10:54:24,637 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-04-22 10:54:24,637 - mqtt_client - INFO -    🔗 HTTP GET http://192.168.10.155:80/capture (attempt 1/3)...
+2026-04-22 10:54:25,985 - mqtt_client - INFO -    ✅ Image fetched: 6438 bytes
+2026-04-22 10:54:25,986 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260422_035424.jpg
+2026-04-22 10:54:25,986 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-04-22 10:54:26,472 - ai.detect - INFO - Detected 1 face(s)
+2026-04-22 10:54:26,984 - ai.detect - INFO - No matching face found in collection
+2026-04-22 10:54:26,985 - ai.detect - INFO - Face 1: UNKNOWN
+2026-04-22 10:54:26,985 - ai.detect - INFO - Unknown face saved: unknown_faces/20260422_105426_face_0_conf_100.jpg
+2026-04-22 10:54:26,985 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-04-22 10:54:26,986 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-04-22 10:54:26,986 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-04-22 10:54:28,835 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-04-22 10:54:30,281 - ai.telegram_alerts - INFO - Alert sent: UNKNOWN_PERSON

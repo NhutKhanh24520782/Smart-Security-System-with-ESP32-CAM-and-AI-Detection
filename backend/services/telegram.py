@@ -4,7 +4,7 @@ from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
 logger = logging.getLogger(__name__)
 
-class TelegramService:
+class TelegramBot:
     def __init__(self):
         self.bot_token = TELEGRAM_BOT_TOKEN
         self.chat_id = TELEGRAM_CHAT_ID
@@ -45,6 +45,13 @@ class TelegramService:
 
         response = requests.post(url, json=payload, timeout=10)
         response.raise_for_status()
+        return True
+
+    def send_message(self, message, emoji=None):
+        """Send text message to Telegram (public method)"""
+        if emoji:
+            message = f"{emoji} {message}"
+        return self._send_message(message)
 
     def _send_photo(self, caption, image_bytes):
         """Send photo with caption to Telegram"""
@@ -61,7 +68,7 @@ class TelegramService:
         response.raise_for_status()
 
 # Global service instance
-telegram_service = TelegramService()
+telegram_service = TelegramBot()
 
 def send_alert(device_id, image_bytes=None, message=None):
     """
