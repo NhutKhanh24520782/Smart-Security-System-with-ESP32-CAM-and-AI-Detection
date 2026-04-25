@@ -2,6 +2,10 @@
 
 A complete IoT security system using ESP32-CAM modules with PIR sensors, AI-powered human detection, and Telegram notifications.
 
+## 🚀 Quick Start
+- Install: pip install boto3
+- Init: python -c "from ai.detect import init_detector; init_detector().create_collection()"
+
 ## 🏗️ Architecture
 
 ```
@@ -27,14 +31,18 @@ project/
 │   ├── app.py                # Flask server + MQTT subscriber launcher
 │   ├── mqtt_client.py        # MQTT client subscribing to camera events
 │   ├── config.py             # Configuration settings
-│   ├── register_face.py      # Register new faces
-│   ├── setup_aws.py          # Establish AWS Rekognition connection
 │   ├── ai/
-│   │   └── detect.py         # AI human detection module
+│   │   ├── detect.py         # AWS Face detection & recognition
+│   │   ├── telegram_alerts.py # Telegram alert integration
+│   │   ├── example_usage.py  # Usage examples
+│   │   ├── quick_start.py    # Quick start patterns
+│   │   └── config_helper.py  # Configuration helper
 │   ├── coordination/
-│   │   └── coordinator.py    # Multi-camera alert coordination logic
-│   └── services/
-│       └── telegram.py       # Telegram notification service
+│   │   └── coordinator.py    # Multi-camera coordination
+│   ├── services/
+│   │   └── telegram.py       # Telegram notification service
+│   ├── known_faces.json      # Face ID ↔ Name mapping (auto-created)
+│   └── unknown_faces/        # Unknown faces storage (auto-created)
 ├── requirements.txt          # Python dependencies
 └── README.md                 # This file
 ```
@@ -72,12 +80,15 @@ MQTT_TOPIC_FILTER = 'camera/+/motion'
 TELEGRAM_BOT_TOKEN = 'your_bot_token_from_botfather'
 TELEGRAM_CHAT_ID = 'your_chat_id'
 
-# AI Method
-AI_METHOD = 'opencv'  # or 'aws'
-
-# AWS (if using AWS Rekognition)
-AWS_ACCESS_KEY = 'your_access_key'
-AWS_SECRET_KEY = 'your_secret_key'
+# AWS Rekognition Configuration
+AWS_REGION = 'us-east-1'
+AWS_ACCESS_KEY = 'YOUR_AWS_ACCESS_KEY'
+AWS_SECRET_KEY = 'YOUR_AWS_SECRET_KEY'
+AWS_FACE_COLLECTION_ID = 'smart-security-collection'
+AWS_FACE_MATCH_THRESHOLD = 80.0
+AWS_FACE_SIMILARITY_THRESHOLD = 80.0
+AWS_KNOWN_FACES_DB = 'known_faces.json'
+AWS_UNKNOWN_FACES_DIR = 'unknown_faces/'
 ```
 
 #### Get Telegram Bot Token
@@ -163,44 +174,76 @@ curl -X POST -F "device_id=cam1" -F "image=@test_image.jpg" http://localhost:500
 3. Trigger motion detection
 4. Check Telegram for alerts
 
-## 🔍 AI Detection Options
+## 🤖 Face Detection & Recognition
 
-### OpenCV (Default)
-- Uses HOG descriptor for human detection
-- No external dependencies
-- Works offline
+### AWS Rekognition (Powered)
+- **Accuracy**: 99%+ face recognition accuracy
+- **Features**: Face detection, recognition, confidence scoring, bounding boxes
+- **Cost**: ~$0.015/detection (AWS free tier: 5,000/month)
+- **Setup**: See [AWS_REKOGNITION_GUIDE.md](AWS_REKOGNITION_GUIDE.md) for full guide
 
-### AWS Rekognition
-- More accurate detection
-- Requires AWS account and API costs
-- Set `AI_METHOD = 'aws'` in config
+**How It Works**:
+1. Motion detected → Image captured by ESP32
+2. Image sent to Flask backend via MQTT
+3. AWS Rekognition analyzes image
+4. Detected faces matched against known persons collection
+5. Result: KNOWN (person name) or UNKNOWN
+6. Telegram alert sent with confidence score
+7. Unknown faces saved to `unknown_faces/`
 
 ## 📊 Features
 
-- ✅ Motion detection with debounce
-- ✅ Cooldown period between triggers
-- ✅ Image capture and transmission
-- ✅ AI-powered human detection
-- ✅ Acquaintances or strangers detection
-- ✅ Telegram alerts with images
-- ✅ Multi-device support
-- ✅ Local image logging
-- ✅ Confidence thresholding
-- ✅ Comprehensive logging
+### Face Detection & Recognition
+- ✅ AWS Rekognition: 99%+ accuracy face detection
+- ✅ Face recognition: KNOWN vs UNKNOWN status
+- ✅ Bounding boxes: Precise face location
+- ✅ Confidence scoring: Detection confidence (0-100)
 
-## 🔧 Configuration Options
+### Person Management
+- ✅ Register: Add new known persons
+- ✅ Remove: Delete persons from collection
+- ✅ List: View all registered persons
+- ✅ Rename: Update person names
+- ✅ Statistics: Collection analytics
+
+### Alerts & Notifications
+- ✅ Smart Telegram: Different alerts for KNOWN vs UNKNOWN
+- ✅ Multi-camera: Per-camera tracking
+- ✅ Alert cooldown: 30s between messages (prevents spam)
+- ✅ Confidence display: Shows detection confidence
+
+### Hardware & Motion
+- ✅ Motion detection: PIR sensor with debounce (2s) & cooldown (15s)
+- ✅ Image capture: 640x480 JPEG at high quality
+- ✅ Multi-camera: Support 2+ cameras
+- ✅ Buzzer control: Audio feedback on motion
+
+## ⚙️ Configuration
+
+### AWS Thresholds (Adjust for accuracy)
+```python
+# Strict: 85-90 (fewer false positives)
+AWS_FACE_MATCH_THRESHOLD = 85.0
+
+# Balanced: 80-85 (recommended for security)
+AWS_FACE_MATCH_THRESHOLD = 80.0  # ← Default
+
+# Lenient: 70-75 (more matches, more false positives)
+AWS_FACE_MATCH_THRESHOLD = 75.0
+```
+
+### Storage
+- known_faces.json: Face ID ↔ Name mapping
+- unknown_faces/: Unknown face images (timestamped)
 
 ### Timing
-- Debounce delay: 2 seconds
-- Cooldown period: 15 seconds
-- Buzzer duration: 1 second
+- Motion debounce: 2 seconds
+- Cooldown: 15 seconds
+- Alert cooldown: 30 seconds (prevents Telegram spam)
 
 ### Camera
 - Resolution: 640x480 (VGA)
-- JPEG quality: 12 (higher quality)
-
-### Detection
-- Confidence threshold: 0.5 (50%)
+- JPEG quality: 12 (high quality)
 
 ## 🐛 Troubleshooting
 
