@@ -27,6 +27,8 @@ project/
 │   ├── app.py                # Flask server + MQTT subscriber launcher
 │   ├── mqtt_client.py        # MQTT client subscribing to camera events
 │   ├── config.py             # Configuration settings
+│   ├── register_face.py      # Register new faces
+│   ├── setup_aws.py          # Establish AWS Rekognition connection
 │   ├── ai/
 │   │   └── detect.py         # AI human detection module
 │   ├── coordination/
@@ -117,6 +119,11 @@ Server will run on `http://localhost:5000`
 #### ESP32 Configuration
 Update in each `main.ino`:
 
+#### Face detect Configuration
+1. Add your acquaintance face in backend folder
+2. Edit register_face.py
+3. Run register_face.py: pthyon register_face.py
+
 ```cpp
 const char* ssid = "YOUR_WIFI_SSID";
 const char* password = "YOUR_WIFI_PASSWORD";
@@ -174,6 +181,7 @@ curl -X POST -F "device_id=cam1" -F "image=@test_image.jpg" http://localhost:500
 - ✅ Cooldown period between triggers
 - ✅ Image capture and transmission
 - ✅ AI-powered human detection
+- ✅ Acquaintances or strangers detection
 - ✅ Telegram alerts with images
 - ✅ Multi-device support
 - ✅ Local image logging
