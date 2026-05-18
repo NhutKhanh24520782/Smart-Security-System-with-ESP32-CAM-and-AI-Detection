@@ -49,14 +49,9 @@ const char* mqttBroker = "47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud";
 const int mqttPort = 8883;
 const char* mqttUser = "esp32cam1";
 const char* mqttPassword = "Nhutkhanh2025";
-const char* deviceId = "Frontdoor";
+const char* deviceId = "Front_door";
 String mqttTopic = String("camera/") + deviceId + "/motion";
 String doorControlTopic = String("door/") + deviceId + "/control";  // ✅ Topic để nhận lệnh mở cửa
-String buzzerControlTopic = String("buzzer/") + deviceId + "/control";  // ✅ Topic để nhận lệnh buzzer
-
-// ✅ Buzzer 5-second timing
-unsigned long buzzer5secStartTime = 0;
-bool buzzer5secActive = false;
 
 // Timing variables
 unsigned long lastTriggerTime = 0;
@@ -206,9 +201,6 @@ void connectMqtt() {
       // ✅ Subscribe to door control topic
       mqttClient.subscribe(doorControlTopic.c_str());
       Serial.printf("✅ Subscribed to topic: %s\n", doorControlTopic.c_str());
-      // ✅ Subscribe to buzzer control topic
-      mqttClient.subscribe(buzzerControlTopic.c_str());
-      Serial.printf("✅ Subscribed to topic: %s\n", buzzerControlTopic.c_str());
     } else {
       Serial.printf("MQTT connection failed, rc=%d. Retrying in 2s\n", mqttClient.state());
       delay(2000);
@@ -276,15 +268,6 @@ void closeDoor() {
   }
 }
 
-// ✅ Buzzer 5-second continuous alert for unknown person
-void triggerBuzzer5Sec() {
-  Serial.println("🔔 Triggering buzzer for 5 seconds...");
-  digitalWrite(BUZZER_PIN, LOW);  // Buzzer ON (LOW active)
-  buzzer5secActive = true;
-  buzzer5secStartTime = millis();
-  Serial.println("🔔 Buzzer ON (5 seconds)");
-}
-
 // ✅ MQTT callback để nhận lệnh từ backend
 void onMqttMessage(char* topic, byte* payload, unsigned int length) {
   String topicStr = String(topic);
@@ -337,28 +320,6 @@ void onMqttMessage(char* topic, byte* payload, unsigned int length) {
       } else if (messageStr == "close" || messageStr == "CLOSE") {
         Serial.println("✅ Backend command: CLOSE DOOR");
         closeDoor();
-      }
-    }
-  }
-  
-  // ⚠️ Check if buzzer command from backend (unknown person detected)
-  if (topicStr == buzzerControlTopic) {
-    StaticJsonDocument<256> doc;
-    DeserializationError error = deserializeJson(doc, messageStr);
-    
-    if (!error) {
-      String command = doc["command"] | "";
-      String action = doc["action"] | "";
-      int duration = doc["duration"] | 5000;
-      
-      Serial.println("✅ Buzzer JSON payload parsed");
-      Serial.printf("   Command: %s\n", command.c_str());
-      Serial.printf("   Action: %s\n", action.c_str());
-      Serial.printf("   Duration: %d ms\n", duration);
-      
-      if (command == "buzzer" || action == "BUZZER_5SEC") {
-        Serial.println("⚠️ Unknown person detected - triggering 5-second buzzer!");
-        triggerBuzzer5Sec();
       }
     }
   }
@@ -572,13 +533,6 @@ void loop() {
       Serial.printf("📍 PIR released at %lu ms (was stable for %lu ms)\n", currentTime, currentTime - pirHighStart);
       pirStable = false;
     }
-  }
-
-  // ✅ Handle 5-second buzzer timing for unknown person
-  if (buzzer5secActive && (currentTime - buzzer5secStartTime >= 5000)) {
-    digitalWrite(BUZZER_PIN, HIGH);  // Buzzer OFF (LOW active)
-    buzzer5secActive = false;
-    Serial.println("🔔 Buzzer OFF (5-second alert completed)");
   }
 
   // ✅ Auto-close door after SERVO_OPEN_DURATION
