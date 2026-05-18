@@ -40,12 +40,18 @@ class TelegramBot:
         url = f"{self.base_url}/sendMessage"
         payload = {
             'chat_id': self.chat_id,
-            'text': message
+            'text': message,
+            'parse_mode': 'Markdown'
         }
 
-        response = requests.post(url, json=payload, timeout=10)
-        response.raise_for_status()
-        return True
+        try:
+            response = requests.post(url, json=payload, timeout=10)
+            response.raise_for_status()
+            logger.info(f"✅ Message sent to Telegram")
+            return True
+        except Exception as e:
+            logger.error(f"❌ Failed to send message to Telegram: {e}")
+            return False
 
     def send_message(self, message, emoji=None):
         """Send text message to Telegram (public method)"""
@@ -64,8 +70,14 @@ class TelegramBot:
             'caption': caption
         }
 
-        response = requests.post(url, files=files, data=data, timeout=10)
-        response.raise_for_status()
+        try:
+            response = requests.post(url, files=files, data=data, timeout=10)
+            response.raise_for_status()
+            logger.info(f"✅ Photo sent to Telegram: {caption[:50]}...")
+            return True
+        except Exception as e:
+            logger.error(f"❌ Failed to send photo to Telegram: {e}")
+            return False
 
 # Global service instance
 telegram_service = TelegramBot()

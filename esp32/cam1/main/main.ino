@@ -5,11 +5,14 @@
 #include <WebServer.h>  // ✅ HTTP server cho gửi ảnh
 #include <esp_camera.h>
 #include <time.h>
+#include <ESP32Servo.h>  // ✅ Servo library
+#include <ArduinoJson.h>  // ✅ JSON parsing library
 
 // Pin definitions
 #define PIR_PIN 13        // PIR sensor pin
 #define BUZZER_PIN 14     // Buzzer pin (LOW active)
 #define FLASH_LED_PIN 4   // LED Flash pin (HIGH to turn on)
+#define SERVO_PIN 12      // Servo control pin (GPIO 12)
 
 // Camera pins for ESP32-CAM
 #define PWDN_GPIO_NUM     32
@@ -30,16 +33,30 @@
 #define PCLK_GPIO_NUM     22
 
 // WiFi credentials
-const char* ssid = "khoaaaa";
-const char* password = "dangkihocphan";
+const char* ssid = "Nhut Khanh";
+const char* password = "Nhutkhanh2020";
+
+// ✅ Servo configuration
+Servo doorServo;
+const int SERVO_CLOSED_ANGLE = 0;      // Closed position
+const int SERVO_OPEN_ANGLE = 120;      // Open position
+const unsigned long SERVO_OPEN_DURATION = 3000;  // Keep door open for 3 seconds
+unsigned long servoOpenStartTime = 0;
+bool servoIsOpen = false;
 
 // MQTT config
 const char* mqttBroker = "47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud";
 const int mqttPort = 8883;
 const char* mqttUser = "esp32cam1";
 const char* mqttPassword = "Nhutkhanh2025";
-const char* deviceId = "cam1";
+const char* deviceId = "Frontdoor";
 String mqttTopic = String("camera/") + deviceId + "/motion";
+String doorControlTopic = String("door/") + deviceId + "/control";  // ✅ Topic để nhận lệnh mở cửa
+String buzzerControlTopic = String("buzzer/") + deviceId + "/control";  // ✅ Topic để nhận lệnh buzzer
+
+// ✅ Buzzer 5-second timing
+unsigned long buzzer5secStartTime = 0;
+bool buzzer5secActive = false;
 
 // Timing variables
 unsigned long lastTriggerTime = 0;
@@ -180,11 +197,18 @@ void connectMqtt() {
   mqttClient.setServer(mqttBroker, mqttPort);
   mqttClient.setKeepAlive(60);
   mqttClient.setBufferSize(32768);  // ✅ 32KB (đủ cho ~20KB payload)
+  mqttClient.setCallback(onMqttMessage);  // ✅ Set callback để nhận lệnh
 
   while (!mqttClient.connected()) {
     Serial.printf("Connecting to MQTT broker %s:%d...\n", mqttBroker, mqttPort);
     if (mqttClient.connect(deviceId, mqttUser, mqttPassword)) {
       Serial.println("MQTT connected");
+      // ✅ Subscribe to door control topic
+      mqttClient.subscribe(doorControlTopic.c_str());
+      Serial.printf("✅ Subscribed to topic: %s\n", doorControlTopic.c_str());
+      // ✅ Subscribe to buzzer control topic
+      mqttClient.subscribe(buzzerControlTopic.c_str());
+      Serial.printf("✅ Subscribed to topic: %s\n", buzzerControlTopic.c_str());
     } else {
       Serial.printf("MQTT connection failed, rc=%d. Retrying in 2s\n", mqttClient.state());
       delay(2000);
@@ -222,6 +246,123 @@ void publishMotionEvent() {
 }
 
 // ❌ XÓA buildPayload (không cần nữa)
+
+// ✅ Servo control functions
+void openDoor() {
+  if (!servoIsOpen) {
+    Serial.println("🚪 Opening door...");
+    doorServo.write(SERVO_OPEN_ANGLE);
+    servoIsOpen = true;
+    servoOpenStartTime = millis();
+    
+    // Buzzer alert when door opens
+    digitalWrite(BUZZER_PIN, LOW);
+    delay(200);
+    digitalWrite(BUZZER_PIN, HIGH);
+    delay(100);
+    digitalWrite(BUZZER_PIN, LOW);
+    delay(200);
+    digitalWrite(BUZZER_PIN, HIGH);
+    Serial.println("✅ Door opened, servo at 120°");
+  }
+}
+
+void closeDoor() {
+  if (servoIsOpen) {
+    Serial.println("🚪 Closing door...");
+    doorServo.write(SERVO_CLOSED_ANGLE);
+    servoIsOpen = false;
+    Serial.println("✅ Door closed, servo at 0°");
+  }
+}
+
+// ✅ Buzzer 5-second continuous alert for unknown person
+void triggerBuzzer5Sec() {
+  Serial.println("🔔 Triggering buzzer for 5 seconds...");
+  digitalWrite(BUZZER_PIN, LOW);  // Buzzer ON (LOW active)
+  buzzer5secActive = true;
+  buzzer5secStartTime = millis();
+  Serial.println("🔔 Buzzer ON (5 seconds)");
+}
+
+// ✅ MQTT callback để nhận lệnh từ backend
+void onMqttMessage(char* topic, byte* payload, unsigned int length) {
+  String topicStr = String(topic);
+  String messageStr;
+  
+  for (unsigned int i = 0; i < length; i++) {
+    messageStr += (char)payload[i];
+  }
+  
+  Serial.printf("📨 MQTT Message received on topic: %s\n", topic);
+  Serial.printf("    Payload: %s\n", messageStr.c_str());
+  
+  // Kiểm tra nếu là lệnh mở cửa từ backend
+  if (topicStr == doorControlTopic) {
+    // ✅ Try to parse as JSON first (new format from backend)
+    StaticJsonDocument<256> doc;
+    DeserializationError error = deserializeJson(doc, messageStr);
+    
+    if (!error) {
+      // JSON parsing successful - new format
+      String command = doc["command"] | "";
+      String action = doc["action"] | "";
+      JsonArray persons = doc["detected_persons"];
+      
+      Serial.println("✅ JSON payload parsed successfully");
+      Serial.printf("   Command: %s\n", command.c_str());
+      Serial.printf("   Action: %s\n", action.c_str());
+      
+      if (!persons.isNull()) {
+        Serial.print("   Detected persons: ");
+        for (const char* person : persons) {
+          Serial.printf("%s ", person);
+        }
+        Serial.println();
+      }
+      
+      if (command == "open" || action == "UNLOCK_DOOR") {
+        Serial.println("🔓 Backend command: OPEN DOOR (known person detected)");
+        openDoor();
+      } else if (command == "close" || action == "LOCK_DOOR") {
+        Serial.println("🔐 Backend command: CLOSE DOOR");
+        closeDoor();
+      }
+    } else {
+      // If not JSON, try simple string format (fallback for compatibility)
+      Serial.println("⚠️  JSON parsing failed, trying simple format");
+      if (messageStr == "open" || messageStr == "OPEN") {
+        Serial.println("✅ Backend command: OPEN DOOR");
+        openDoor();
+      } else if (messageStr == "close" || messageStr == "CLOSE") {
+        Serial.println("✅ Backend command: CLOSE DOOR");
+        closeDoor();
+      }
+    }
+  }
+  
+  // ⚠️ Check if buzzer command from backend (unknown person detected)
+  if (topicStr == buzzerControlTopic) {
+    StaticJsonDocument<256> doc;
+    DeserializationError error = deserializeJson(doc, messageStr);
+    
+    if (!error) {
+      String command = doc["command"] | "";
+      String action = doc["action"] | "";
+      int duration = doc["duration"] | 5000;
+      
+      Serial.println("✅ Buzzer JSON payload parsed");
+      Serial.printf("   Command: %s\n", command.c_str());
+      Serial.printf("   Action: %s\n", action.c_str());
+      Serial.printf("   Duration: %d ms\n", duration);
+      
+      if (command == "buzzer" || action == "BUZZER_5SEC") {
+        Serial.println("⚠️ Unknown person detected - triggering 5-second buzzer!");
+        triggerBuzzer5Sec();
+      }
+    }
+  }
+}
 
 void captureAndSend() {
   Serial.println("🔴 captureAndSend() called - motion event triggered");
@@ -330,6 +471,12 @@ void setup() {
   int initialPirState = digitalRead(PIR_PIN);
   Serial.printf("🔍 Initial PIR state: %d (0=LOW/no motion, 1=HIGH/motion detected)\n", initialPirState);
   
+  // ✅ Setup Servo
+  doorServo.setPeriodHertz(50);  // Standard servo frequency
+  doorServo.attach(SERVO_PIN, 600, 2400);  // Attach to GPIO 12, with wider pulse width for SG90
+  doorServo.write(SERVO_CLOSED_ANGLE);  // Start at closed position
+  Serial.printf("✅ Servo initialized on GPIO %d (closed position)\n", SERVO_PIN);
+  
   pinMode(BUZZER_PIN, OUTPUT);
   digitalWrite(BUZZER_PIN, HIGH);
   pinMode(FLASH_LED_PIN, OUTPUT);
@@ -349,6 +496,25 @@ void setup() {
   // ✅ Setup HTTP server
   server.on("/capture", HTTP_GET, handleCapture);
   server.on("/health", HTTP_GET, handleHealth);
+  
+  // ✅ Servo control endpoints
+  server.on("/door/open", HTTP_GET, []() {
+    Serial.println("🚪 HTTP /door/open called");
+    openDoor();
+    server.send(200, "application/json", "{\"status\":\"door_opening\"}");
+  });
+  
+  server.on("/door/close", HTTP_GET, []() {
+    Serial.println("🚪 HTTP /door/close called");
+    closeDoor();
+    server.send(200, "application/json", "{\"status\":\"door_closing\"}");
+  });
+  
+  server.on("/door/status", HTTP_GET, []() {
+    String status = servoIsOpen ? "open" : "closed";
+    server.send(200, "application/json", "{\"door_status\":\"" + status + "\"}");
+  });
+  
   server.on("/test", HTTP_GET, []() {
     Serial.println("📸 /test endpoint called - capturing test frame...");
     camera_fb_t *fb = esp_camera_fb_get();
@@ -362,7 +528,7 @@ void setup() {
     esp_camera_fb_return(fb);
   });
   server.begin();
-  Serial.println("HTTP server started on port 80 (/capture, /health, /test)");
+  Serial.println("HTTP server started on port 80 (/capture, /health, /door/open, /door/close, /door/status, /test)");
 
   Serial.println("Setup complete");
 }
@@ -406,6 +572,19 @@ void loop() {
       Serial.printf("📍 PIR released at %lu ms (was stable for %lu ms)\n", currentTime, currentTime - pirHighStart);
       pirStable = false;
     }
+  }
+
+  // ✅ Handle 5-second buzzer timing for unknown person
+  if (buzzer5secActive && (currentTime - buzzer5secStartTime >= 5000)) {
+    digitalWrite(BUZZER_PIN, HIGH);  // Buzzer OFF (LOW active)
+    buzzer5secActive = false;
+    Serial.println("🔔 Buzzer OFF (5-second alert completed)");
+  }
+
+  // ✅ Auto-close door after SERVO_OPEN_DURATION
+  if (servoIsOpen && (currentTime - servoOpenStartTime >= SERVO_OPEN_DURATION)) {
+    Serial.println("⏰ Auto-closing door after timeout...");
+    closeDoor();
   }
 
   // ✅ Handle HTTP requests

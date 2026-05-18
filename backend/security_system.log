@@ -1745,3 +1745,842 @@ AttributeError: 'TelegramBot' object has no attribute 'send_message'. Did you me
 2026-04-22 10:54:26,986 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
 2026-04-22 10:54:28,835 - services.telegram - INFO - Alert sent to Telegram for cam1
 2026-04-22 10:54:30,281 - ai.telegram_alerts - INFO - Alert sent: UNKNOWN_PERSON
+2026-05-18 13:23:58,358 - __main__ - INFO - Starting Smart Security System Backend
+2026-05-18 13:23:58,395 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-05-18 13:23:58,396 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:24:00,180 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.220.235.32:5002
+2026-05-18 13:24:00,180 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-18 13:24:00,536 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:24:00,537 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-05-18 13:24:00,537 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-05-18 13:25:00,557 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 13:25:00,557 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-05-18 13:25:00,558 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 13:25:00,558 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 13:25:00,558 - mqtt_client - INFO -    Timestamp: 2026-05-18T06:24:59Z
+2026-05-18 13:25:00,558 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 13:25:00,558 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 13:25:01,100 - mqtt_client - INFO -    ✅ Image fetched: 4390 bytes
+2026-05-18 13:25:01,100 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_062459.jpg
+2026-05-18 13:25:01,100 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 13:25:01,175 - ai.detect - INFO - AWS Rekognition client initialized
+2026-05-18 13:25:01,176 - ai.detect - INFO - Directories initialized: unknown_faces/
+2026-05-18 13:25:01,176 - ai.detect - INFO - Loaded 3 known faces from database
+2026-05-18 13:25:03,155 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 13:25:03,548 - ai.detect - INFO - Face matched: Phat (confidence: 99.90565490722656%)
+2026-05-18 13:25:03,549 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 13:25:03,549 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 13:25:03,549 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 13:25:03,550 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 13:25:05,910 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 13:25:05,911 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 13:25:05,921 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 13:25:07,438 - ai.telegram_alerts - INFO - Alert sent: KNOWN_PERSON
+2026-05-18 13:25:26,330 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 13:25:26,330 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 13:25:26,330 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 13:25:26,331 - mqtt_client - INFO -    Timestamp: 2026-05-18T06:25:25Z
+2026-05-18 13:25:26,331 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 13:25:26,331 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 13:25:28,151 - mqtt_client - INFO -    ✅ Image fetched: 5039 bytes
+2026-05-18 13:25:28,152 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_062525.jpg
+2026-05-18 13:25:28,152 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 13:25:28,698 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 13:25:29,270 - ai.detect - INFO - Face matched: Phat (confidence: 99.95222473144531%)
+2026-05-18 13:25:29,270 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 13:25:29,280 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 13:25:29,281 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 13:25:29,281 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 13:25:29,282 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 13:25:30,802 - ai.telegram_alerts - INFO - Alert sent: KNOWN_PERSON
+2026-05-18 13:25:48,952 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 13:25:48,952 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 13:25:48,953 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 13:25:48,953 - mqtt_client - INFO -    Timestamp: 2026-05-18T06:25:48Z
+2026-05-18 13:25:48,953 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 13:25:48,953 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 13:25:49,993 - mqtt_client - INFO -    ✅ Image fetched: 4535 bytes
+2026-05-18 13:25:49,994 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_062548.jpg
+2026-05-18 13:25:49,994 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 13:25:51,884 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 13:25:52,509 - ai.detect - INFO - Face matched: Phat (confidence: 99.4405288696289%)
+2026-05-18 13:25:52,510 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 13:25:52,510 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=99.87)
+2026-05-18 13:25:52,510 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 13:25:52,511 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 13:25:55,090 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 13:25:55,091 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 13:25:55,092 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 13:25:56,759 - ai.telegram_alerts - INFO - Alert sent: KNOWN_PERSON
+2026-05-18 13:26:15,795 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 13:26:15,795 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 13:26:15,795 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 13:26:15,796 - mqtt_client - INFO -    Timestamp: 2026-05-18T06:26:15Z
+2026-05-18 13:26:15,796 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 13:26:15,796 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 13:26:18,837 - mqtt_client - INFO -    ✅ Image fetched: 4743 bytes
+2026-05-18 13:26:18,837 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_062615.jpg
+2026-05-18 13:26:18,838 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 13:26:19,170 - ai.detect - INFO - No faces detected in image
+2026-05-18 13:26:19,170 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 13:34:28,470 - mqtt_client - WARNING - ⚠️  MQTT disconnected (rc=16)
+2026-05-18 13:34:28,471 - mqtt_client - WARNING - ⚠️  MQTT disconnected (rc=16)
+2026-05-18 13:34:31,760 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:34:31,760 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-05-18 13:34:31,761 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-05-18 13:36:30,713 - mqtt_client - WARNING - ⚠️  MQTT disconnected (rc=7)
+2026-05-18 13:36:32,642 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:36:32,642 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-05-18 13:36:32,643 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-05-18 13:46:52,549 - __main__ - INFO - Starting Smart Security System Backend
+2026-05-18 13:46:52,590 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-05-18 13:46:52,591 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:46:53,627 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.220.235.32:5002
+2026-05-18 13:46:53,627 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-18 13:46:54,138 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:46:54,138 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-05-18 13:46:54,139 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-05-18 13:56:06,718 - __main__ - INFO - Starting Smart Security System Backend
+2026-05-18 13:56:06,764 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-05-18 13:56:06,765 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:56:07,633 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.220.235.32:5002
+2026-05-18 13:56:07,634 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-18 13:56:07,933 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 13:56:07,933 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-05-18 13:56:07,934 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-05-18 14:05:01,406 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:05:01,406 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-05-18 14:05:01,416 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:05:01,417 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:05:01,417 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:05:00Z
+2026-05-18 14:05:01,417 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:05:01,418 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:05:01,776 - mqtt_client - INFO -    ✅ Image fetched: 6731 bytes
+2026-05-18 14:05:01,777 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_070500.jpg
+2026-05-18 14:05:01,777 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:05:02,009 - ai.detect - INFO - AWS Rekognition client initialized
+2026-05-18 14:05:02,010 - ai.detect - INFO - Directories initialized: unknown_faces/
+2026-05-18 14:05:02,011 - ai.detect - INFO - Loaded 3 known faces from database
+2026-05-18 14:05:03,878 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 14:05:04,220 - ai.detect - INFO - No matching face found in collection
+2026-05-18 14:05:04,221 - ai.detect - INFO - Face 1: UNKNOWN
+2026-05-18 14:05:04,221 - ai.detect - INFO - Unknown face saved: unknown_faces/20260518_140504_face_0_conf_92.jpg
+2026-05-18 14:05:04,222 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=92.21)
+2026-05-18 14:05:04,222 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 14:05:04,222 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 14:05:06,434 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 14:05:06,437 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 14:05:07,470 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ *STRANGER DETECTED* ⚠️
+Confidence: `92.2%` [Cam...
+2026-05-18 14:05:07,473 - ai.telegram_alerts - INFO - 📸 Alert with image sent: UNKNOWN_PERSON
+2026-05-18 14:05:16,389 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:05:16,390 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:05:16,390 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:05:16,390 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:05:15Z
+2026-05-18 14:05:16,390 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:05:16,390 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:05:16,632 - mqtt_client - INFO -    ✅ Image fetched: 6361 bytes
+2026-05-18 14:05:16,633 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_070515.jpg
+2026-05-18 14:05:16,633 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:05:20,284 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:05:20,284 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:05:31,425 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:05:31,425 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:05:31,426 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:05:31,426 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:05:30Z
+2026-05-18 14:05:31,426 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:05:31,426 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:05:31,828 - mqtt_client - INFO -    ✅ Image fetched: 6361 bytes
+2026-05-18 14:05:31,829 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_070530.jpg
+2026-05-18 14:05:31,829 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:05:32,143 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:05:32,143 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:05:46,679 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:05:46,679 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:05:46,689 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:05:46,689 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:05:45Z
+2026-05-18 14:05:46,690 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:05:46,690 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:05:47,190 - mqtt_client - INFO -    ✅ Image fetched: 6361 bytes
+2026-05-18 14:05:47,191 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_070545.jpg
+2026-05-18 14:05:47,191 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:05:47,599 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:05:47,599 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:06:01,429 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:06:01,429 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:06:01,430 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:06:01,430 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:06:00Z
+2026-05-18 14:06:01,430 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:06:01,430 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:06:01,936 - mqtt_client - INFO -    ✅ Image fetched: 6361 bytes
+2026-05-18 14:06:01,937 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_070600.jpg
+2026-05-18 14:06:01,937 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:06:02,242 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:06:02,242 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:06:16,584 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:06:16,585 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:06:16,585 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:06:16,586 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:06:15Z
+2026-05-18 14:06:16,586 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:06:16,586 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:06:16,998 - mqtt_client - INFO -    ✅ Image fetched: 5219 bytes
+2026-05-18 14:06:16,999 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_070615.jpg
+2026-05-18 14:06:16,999 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:06:18,029 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:06:18,030 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:10:05,123 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:10:05,124 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:10:05,124 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:10:05,124 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:10:02Z
+2026-05-18 14:10:05,124 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:10:05,125 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:10:05,372 - mqtt_client - INFO -    ✅ Image fetched: 3238 bytes
+2026-05-18 14:10:05,372 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_071002.jpg
+2026-05-18 14:10:05,373 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:10:06,947 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:10:06,947 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:10:18,073 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:10:18,074 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:10:18,074 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:10:18,074 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:10:17Z
+2026-05-18 14:10:18,075 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:10:18,075 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:10:18,220 - mqtt_client - INFO -    ✅ Image fetched: 4764 bytes
+2026-05-18 14:10:18,221 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_071017.jpg
+2026-05-18 14:10:18,221 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:10:18,587 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 14:10:18,992 - ai.detect - INFO - Face matched: Phat (confidence: 98.74411010742188%)
+2026-05-18 14:10:18,992 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 14:10:18,992 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 14:10:18,992 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 14:10:18,992 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 14:10:20,943 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 14:10:20,945 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 14:10:20,946 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 14:10:20,947 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 14:10:22,572 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 14:10:22,575 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 14:10:44,699 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:10:44,699 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:10:44,700 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:10:44,700 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:10:44Z
+2026-05-18 14:10:44,700 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:10:44,700 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:10:45,315 - mqtt_client - INFO -    ✅ Image fetched: 3231 bytes
+2026-05-18 14:10:45,316 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_071044.jpg
+2026-05-18 14:10:45,316 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:10:46,047 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:10:46,047 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:10:59,557 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:10:59,558 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:10:59,558 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:10:59,558 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:10:59Z
+2026-05-18 14:10:59,558 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:10:59,559 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:11:00,088 - mqtt_client - INFO -    ✅ Image fetched: 3974 bytes
+2026-05-18 14:11:00,089 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_071059.jpg
+2026-05-18 14:11:00,089 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 14:11:01,728 - ai.detect - INFO - No faces detected in image
+2026-05-18 14:11:01,729 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 14:11:14,754 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 14:11:14,755 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 14:11:14,755 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 14:11:14,755 - mqtt_client - INFO -    Timestamp: 2026-05-18T07:11:14Z
+2026-05-18 14:11:14,756 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 14:11:14,756 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 14:11:17,863 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 1/3)
+2026-05-18 14:11:18,364 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 2/3)...
+2026-05-18 14:11:18,398 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Max retries exceeded with url: /capture (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x766a7a2bb620>: Failed to establish a new connection: [Errno 111] Connection refused')) (attempt 2/3)
+2026-05-18 14:11:18,899 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 3/3)...
+2026-05-18 14:11:18,960 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Max retries exceeded with url: /capture (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x766a7a30c350>: Failed to establish a new connection: [Errno 111] Connection refused')) (attempt 3/3)
+2026-05-18 14:11:18,960 - mqtt_client - ERROR -    ❌ Failed to fetch image from cam1 after 3 retries
+2026-05-18 14:11:18,961 - mqtt_client - WARNING - ❌ Failed to fetch image from cam1
+2026-05-18 14:13:16,438 - __main__ - INFO - Starting Smart Security System Backend
+2026-05-18 14:13:16,509 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-05-18 14:13:16,510 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 14:13:17,244 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.220.235.32:5002
+2026-05-18 14:13:17,245 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-18 14:13:17,496 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 14:13:17,496 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-05-18 14:13:17,496 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-05-18 17:39:03,425 - __main__ - INFO - Starting Smart Security System Backend
+2026-05-18 17:39:03,492 - mqtt_client - INFO - MQTT TLS enabled for secure connection
+2026-05-18 17:39:03,492 - mqtt_client - INFO - Connecting to MQTT broker 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 17:39:05,179 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.220.235.32:5002
+2026-05-18 17:39:05,180 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-18 17:39:05,581 - mqtt_client - INFO - ✅ MQTT connected successfully to 47aba3e9f3f94aa8b2f163688423010c.s1.eu.hivemq.cloud:8883
+2026-05-18 17:39:05,582 - mqtt_client - INFO - 📡 MQTT subscribed to topic pattern: camera/+/motion
+2026-05-18 17:39:05,582 - mqtt_client - INFO -    Waiting for motion events from ESP32 cameras...
+2026-05-18 17:49:43,073 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 17:49:43,074 - mqtt_client - INFO - 🔌 New ESP32 device detected: cam1
+2026-05-18 17:49:43,074 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 17:49:43,075 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 17:49:43,075 - mqtt_client - INFO -    Timestamp: 2026-05-18T10:49:42Z
+2026-05-18 17:49:43,075 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 17:49:43,075 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 17:49:43,884 - mqtt_client - INFO -    ✅ Image fetched: 4545 bytes
+2026-05-18 17:49:43,885 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_104942.jpg
+2026-05-18 17:49:43,885 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 17:49:44,100 - ai.detect - INFO - AWS Rekognition client initialized
+2026-05-18 17:49:44,100 - ai.detect - INFO - Directories initialized: unknown_faces/
+2026-05-18 17:49:44,100 - ai.detect - INFO - Loaded 3 known faces from database
+2026-05-18 17:49:45,635 - ai.detect - INFO - No faces detected in image
+2026-05-18 17:49:45,635 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:04:45,077 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:04:45,077 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:04:45,077 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:04:45,078 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:04:44Z
+2026-05-18 18:04:45,078 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:04:45,078 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:04:45,381 - mqtt_client - INFO -    ✅ Image fetched: 4297 bytes
+2026-05-18 18:04:45,382 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_110444.jpg
+2026-05-18 18:04:45,383 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:04:46,882 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:04:46,883 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:05:00,128 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:05:00,128 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:05:00,128 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:05:00,129 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:04:59Z
+2026-05-18 18:05:00,129 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:05:00,129 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:05:01,810 - mqtt_client - INFO -    ✅ Image fetched: 4550 bytes
+2026-05-18 18:05:01,811 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_110459.jpg
+2026-05-18 18:05:01,811 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:05:02,179 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:05:02,689 - ai.detect - INFO - Face matched: Phat (confidence: 99.72038269042969%)
+2026-05-18 18:05:02,689 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:05:02,689 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:05:02,690 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:05:02,690 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:05:04,634 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:05:04,637 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:05:04,638 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:05:04,638 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:05:06,068 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:05:06,070 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:05:15,063 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:05:15,063 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:05:15,063 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:05:15,064 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:05:14Z
+2026-05-18 18:05:15,064 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:05:15,064 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:05:15,491 - mqtt_client - INFO -    ✅ Image fetched: 4038 bytes
+2026-05-18 18:05:15,492 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_110514.jpg
+2026-05-18 18:05:15,492 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:05:16,008 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:05:16,008 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:13:35,901 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:13:35,901 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:13:35,901 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:13:35,902 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:13:35Z
+2026-05-18 18:13:35,902 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:13:35,902 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:13:36,526 - mqtt_client - INFO -    ✅ Image fetched: 4481 bytes
+2026-05-18 18:13:36,527 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111335.jpg
+2026-05-18 18:13:36,527 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:13:38,258 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:13:38,259 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:13:55,358 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:13:55,358 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:13:55,358 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:13:55,358 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:13:54Z
+2026-05-18 18:13:55,359 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:13:55,359 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:13:55,665 - mqtt_client - INFO -    ✅ Image fetched: 3947 bytes
+2026-05-18 18:13:55,665 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111354.jpg
+2026-05-18 18:13:55,666 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:13:56,382 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:13:56,756 - ai.detect - INFO - Face matched: Phat (confidence: 99.37500762939453%)
+2026-05-18 18:13:56,756 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:13:56,756 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:13:56,757 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:13:56,757 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:13:59,147 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:13:59,149 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:13:59,151 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:13:59,151 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:14:00,583 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:14:00,586 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:14:23,212 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:14:23,212 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:14:23,212 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:14:23,213 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:14:22Z
+2026-05-18 18:14:23,213 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:14:23,213 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:14:23,799 - mqtt_client - INFO -    ✅ Image fetched: 3850 bytes
+2026-05-18 18:14:23,800 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111422.jpg
+2026-05-18 18:14:23,800 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:14:24,158 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:14:25,316 - ai.detect - INFO - Face matched: Phat (confidence: 99.35961151123047%)
+2026-05-18 18:14:25,316 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:14:25,316 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:14:25,317 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:14:25,317 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:14:25,318 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:14:26,911 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:14:26,914 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:14:47,787 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:14:47,787 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:14:47,788 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:14:47,788 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:14:47Z
+2026-05-18 18:14:47,788 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:14:47,788 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:14:51,069 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Read timed out. (attempt 1/3)
+2026-05-18 18:14:51,570 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 2/3)...
+2026-05-18 18:14:52,119 - mqtt_client - INFO -    ✅ Image fetched: 3835 bytes
+2026-05-18 18:14:52,120 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111447.jpg
+2026-05-18 18:14:52,120 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:14:52,475 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:14:52,832 - ai.detect - INFO - Face matched: Phat (confidence: 99.73695373535156%)
+2026-05-18 18:14:52,833 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:14:52,833 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=99.98)
+2026-05-18 18:14:52,833 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:14:52,833 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:14:54,648 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:14:54,651 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:14:54,652 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:14:54,652 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:14:55,843 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:14:55,846 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:15:17,381 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:15:17,382 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:15:17,382 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:15:17,382 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:15:16Z
+2026-05-18 18:15:17,382 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:15:17,383 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:15:18,405 - mqtt_client - INFO -    ✅ Image fetched: 3785 bytes
+2026-05-18 18:15:18,406 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111516.jpg
+2026-05-18 18:15:18,406 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:15:18,782 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:15:19,147 - ai.detect - INFO - Face matched: Phat (confidence: 99.6044921875%)
+2026-05-18 18:15:19,147 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:15:19,148 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:15:19,148 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:15:19,148 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:15:19,148 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:15:20,814 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:15:20,816 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:15:32,537 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:15:32,538 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:15:32,538 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:15:32,538 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:15:32Z
+2026-05-18 18:15:32,539 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:15:32,539 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:15:32,786 - mqtt_client - INFO -    ✅ Image fetched: 3988 bytes
+2026-05-18 18:15:32,787 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111532.jpg
+2026-05-18 18:15:32,787 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:15:33,151 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:15:33,666 - ai.detect - INFO - Face matched: Phat (confidence: 97.20032501220703%)
+2026-05-18 18:15:33,666 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:15:33,666 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:15:33,667 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:15:33,667 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:15:35,404 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:15:35,407 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:15:35,407 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:15:35,408 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:15:36,838 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:15:36,841 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:15:58,239 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:15:58,239 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:15:58,240 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:15:58,240 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:15:57Z
+2026-05-18 18:15:58,240 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:15:58,240 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:15:58,556 - mqtt_client - INFO -    ✅ Image fetched: 5861 bytes
+2026-05-18 18:15:58,557 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111557.jpg
+2026-05-18 18:15:58,557 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:15:58,888 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:15:59,302 - ai.detect - INFO - No matching face found in collection
+2026-05-18 18:15:59,303 - ai.detect - INFO - Face 1: UNKNOWN
+2026-05-18 18:15:59,303 - ai.detect - INFO - Unknown face saved: unknown_faces/20260518_181559_face_0_conf_100.jpg
+2026-05-18 18:15:59,304 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=99.99)
+2026-05-18 18:15:59,304 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:16:01,314 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ *STRANGER DETECTED* ⚠️
+Confidence: `100.0%` [Ca...
+2026-05-18 18:16:01,317 - ai.telegram_alerts - INFO - 📸 Alert with image sent: UNKNOWN_PERSON
+2026-05-18 18:16:13,299 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:16:13,299 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:16:13,299 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:16:13,300 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:16:12Z
+2026-05-18 18:16:13,300 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:16:13,300 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:16:13,511 - mqtt_client - INFO -    ✅ Image fetched: 5818 bytes
+2026-05-18 18:16:13,512 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111612.jpg
+2026-05-18 18:16:13,512 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:16:13,883 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:16:13,883 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:16:28,345 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:16:28,346 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:16:28,346 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:16:28,346 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:16:27Z
+2026-05-18 18:16:28,346 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:16:28,347 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:16:30,495 - mqtt_client - INFO -    ✅ Image fetched: 4097 bytes
+2026-05-18 18:16:30,496 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_111627.jpg
+2026-05-18 18:16:30,496 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:16:30,841 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:16:31,178 - ai.detect - INFO - Face matched: Phat (confidence: 97.01049041748047%)
+2026-05-18 18:16:31,179 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:16:31,179 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=99.97)
+2026-05-18 18:16:31,179 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:16:31,179 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:16:33,060 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:16:33,063 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:16:33,070 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:16:33,071 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:16:34,592 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:16:34,595 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:20:22,429 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:20:22,430 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:20:22,430 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:20:22,430 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:20:22Z
+2026-05-18 18:20:22,430 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:20:22,430 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:20:25,625 - mqtt_client - INFO -    ✅ Image fetched: 4060 bytes
+2026-05-18 18:20:25,626 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_112022.jpg
+2026-05-18 18:20:25,626 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:20:27,346 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:20:27,860 - ai.detect - INFO - Face matched: Phat (confidence: 98.50047302246094%)
+2026-05-18 18:20:27,860 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:20:27,860 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:20:27,860 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:20:27,861 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:20:29,661 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:20:29,664 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:20:29,665 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:20:29,665 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:20:31,057 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:20:31,059 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:21:15,884 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:21:15,884 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:21:15,884 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:21:15,885 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:21:15Z
+2026-05-18 18:21:15,885 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:21:15,885 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:21:16,701 - mqtt_client - INFO -    ✅ Image fetched: 4059 bytes
+2026-05-18 18:21:16,702 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_112115.jpg
+2026-05-18 18:21:16,702 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:21:17,043 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:21:17,417 - ai.detect - INFO - Face matched: Phat (confidence: 97.07017517089844%)
+2026-05-18 18:21:17,417 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:21:17,418 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:21:17,418 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:21:17,418 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:21:19,227 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:21:19,230 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:21:19,231 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:21:19,231 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:21:20,488 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:21:20,491 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:24:41,028 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:24:41,028 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:24:41,028 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:24:41,029 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:24:40Z
+2026-05-18 18:24:41,029 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:24:41,029 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:24:41,819 - mqtt_client - INFO -    ✅ Image fetched: 4354 bytes
+2026-05-18 18:24:41,821 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_112440.jpg
+2026-05-18 18:24:41,822 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:24:43,447 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:24:43,447 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:24:56,062 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:24:56,063 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:24:56,063 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:24:56,063 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:24:55Z
+2026-05-18 18:24:56,063 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:24:56,064 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:24:59,727 - mqtt_client - INFO -    ✅ Image fetched: 4536 bytes
+2026-05-18 18:24:59,728 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_112455.jpg
+2026-05-18 18:24:59,728 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:25:00,054 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:25:00,054 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:25:11,195 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:25:11,195 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:25:11,196 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:25:11,196 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:25:10Z
+2026-05-18 18:25:11,196 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:25:11,197 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:25:11,567 - mqtt_client - INFO -    ✅ Image fetched: 4536 bytes
+2026-05-18 18:25:11,568 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_112510.jpg
+2026-05-18 18:25:11,568 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:25:11,916 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:25:11,916 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:25:28,706 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:25:28,706 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:25:28,707 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:25:28,707 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:25:25Z
+2026-05-18 18:25:28,707 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:25:28,707 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:25:32,392 - mqtt_client - INFO -    ✅ Image fetched: 4536 bytes
+2026-05-18 18:25:32,393 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_112525.jpg
+2026-05-18 18:25:32,393 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:25:32,701 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:25:32,701 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:31:27,359 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:31:27,360 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:31:27,360 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:31:27,360 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:31:26Z
+2026-05-18 18:31:27,361 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:31:27,361 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:31:27,779 - mqtt_client - INFO -    ✅ Image fetched: 5979 bytes
+2026-05-18 18:31:27,780 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_113126.jpg
+2026-05-18 18:31:27,781 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:31:30,327 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:31:30,327 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:34:35,527 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:34:35,527 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:34:35,537 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:34:35,537 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:34:34Z
+2026-05-18 18:34:35,538 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:34:35,538 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:34:38,754 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Read timed out. (attempt 1/3)
+2026-05-18 18:34:39,254 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 2/3)...
+2026-05-18 18:34:42,261 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 2/3)
+2026-05-18 18:34:42,762 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 3/3)...
+2026-05-18 18:34:45,769 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 3/3)
+2026-05-18 18:34:45,769 - mqtt_client - ERROR -    ❌ Failed to fetch image from cam1 after 3 retries
+2026-05-18 18:34:45,770 - mqtt_client - WARNING - ❌ Failed to fetch image from cam1
+2026-05-18 18:35:46,829 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:35:46,829 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:35:46,829 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:35:46,830 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:35:46Z
+2026-05-18 18:35:46,830 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:35:46,830 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:35:47,169 - mqtt_client - INFO -    ✅ Image fetched: 4162 bytes
+2026-05-18 18:35:47,170 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_113546.jpg
+2026-05-18 18:35:47,171 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:35:48,496 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:35:48,851 - ai.detect - INFO - Face matched: Phat (confidence: 97.99522399902344%)
+2026-05-18 18:35:48,851 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:35:48,851 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:35:48,851 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:35:48,851 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:35:50,587 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:35:50,589 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:35:50,590 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:35:50,591 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:35:51,815 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:35:51,818 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:40:39,732 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:40:39,732 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:40:39,732 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:40:39,732 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:40:36Z
+2026-05-18 18:40:39,733 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:40:39,733 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:40:43,396 - mqtt_client - INFO -    ✅ Image fetched: 4145 bytes
+2026-05-18 18:40:43,397 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_114036.jpg
+2026-05-18 18:40:43,397 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:40:44,747 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:40:45,303 - ai.detect - INFO - Face matched: Phat (confidence: 99.72398376464844%)
+2026-05-18 18:40:45,303 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:40:45,303 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:40:45,304 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:40:45,304 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:40:47,050 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:40:47,052 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:40:47,053 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:40:47,054 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:40:48,302 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:40:48,305 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:41:54,433 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:41:54,434 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:41:54,434 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:41:54,434 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:41:54Z
+2026-05-18 18:41:54,435 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:41:54,435 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:41:54,932 - mqtt_client - INFO -    ✅ Image fetched: 3610 bytes
+2026-05-18 18:41:54,932 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_114154.jpg
+2026-05-18 18:41:54,932 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:41:56,265 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:41:56,265 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:42:39,682 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:42:39,683 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:42:39,683 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:42:39,683 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:42:39Z
+2026-05-18 18:42:39,683 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:42:39,683 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:42:42,891 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Read timed out. (attempt 1/3)
+2026-05-18 18:42:43,391 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 2/3)...
+2026-05-18 18:42:43,697 - mqtt_client - INFO -    ✅ Image fetched: 4286 bytes
+2026-05-18 18:42:43,697 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_114239.jpg
+2026-05-18 18:42:43,698 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:42:44,009 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:42:44,009 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:42:54,728 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:42:54,728 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:42:54,728 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:42:54,729 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:42:54Z
+2026-05-18 18:42:54,729 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:42:54,729 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:42:55,026 - mqtt_client - INFO -    ✅ Image fetched: 4465 bytes
+2026-05-18 18:42:55,027 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_114254.jpg
+2026-05-18 18:42:55,027 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:42:55,388 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:42:55,389 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:43:59,759 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:43:59,760 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:43:59,760 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:43:59,760 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:43:59Z
+2026-05-18 18:43:59,761 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:43:59,761 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:44:02,776 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 1/3)
+2026-05-18 18:44:03,276 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 2/3)...
+2026-05-18 18:44:03,473 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Max retries exceeded with url: /capture (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x78f1696d04a0>: Failed to establish a new connection: [Errno 111] Connection refused')) (attempt 2/3)
+2026-05-18 18:44:03,974 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 3/3)...
+2026-05-18 18:44:06,980 - mqtt_client - WARNING -    ⚠️  Timeout (attempt 3/3)
+2026-05-18 18:44:06,981 - mqtt_client - ERROR -    ❌ Failed to fetch image from cam1 after 3 retries
+2026-05-18 18:44:06,981 - mqtt_client - WARNING - ❌ Failed to fetch image from cam1
+2026-05-18 18:50:11,686 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:50:11,687 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:50:11,687 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:50:11,687 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:50:11Z
+2026-05-18 18:50:11,688 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:50:11,688 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:50:11,889 - mqtt_client - INFO -    ✅ Image fetched: 3763 bytes
+2026-05-18 18:50:11,889 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_115011.jpg
+2026-05-18 18:50:11,890 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:50:13,241 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:50:13,241 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:52:33,205 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:52:33,206 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:52:33,206 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:52:33,206 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:52:32Z
+2026-05-18 18:52:33,206 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:52:33,207 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:52:33,514 - mqtt_client - INFO -    ✅ Image fetched: 4187 bytes
+2026-05-18 18:52:33,514 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_115232.jpg
+2026-05-18 18:52:33,515 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:52:34,896 - ai.detect - INFO - Detected 1 face(s)
+2026-05-18 18:52:35,293 - ai.detect - INFO - Face matched: Phat (confidence: 99.5829086303711%)
+2026-05-18 18:52:35,294 - ai.detect - INFO - Face 1: KNOWN - Phat
+2026-05-18 18:52:35,294 - mqtt_client - INFO - ✅ Human detected by cam1 (confidence=100.00)
+2026-05-18 18:52:35,294 - coordination.coordinator - INFO - Single-camera event built: ⚠️ Human detected at Camera cam1
+2026-05-18 18:52:35,294 - mqtt_client - INFO - 🚨 Sending alert: ⚠️ Human detected at Camera cam1
+2026-05-18 18:52:36,996 - services.telegram - INFO - ✅ Photo sent to Telegram: ⚠️ Human detected at Camera cam1...
+2026-05-18 18:52:36,999 - services.telegram - INFO - Alert sent to Telegram for cam1
+2026-05-18 18:52:37,000 - mqtt_client - INFO - 🔓 Known person(s) detected: ['Phat']
+2026-05-18 18:52:37,000 - mqtt_client - INFO - 🔓 Door open command sent to door/cam1/control: ['Phat']
+2026-05-18 18:52:38,229 - services.telegram - INFO - ✅ Photo sent to Telegram: ✅ *Known Person Detected*
+Name: `Phat`
+Confidence:...
+2026-05-18 18:52:38,231 - ai.telegram_alerts - INFO - 📸 Alert with image sent: KNOWN_PERSON
+2026-05-18 18:53:00,040 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:53:00,040 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:53:00,040 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:53:00,040 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:52:59Z
+2026-05-18 18:53:00,041 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:53:00,041 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:53:00,860 - mqtt_client - INFO -    ✅ Image fetched: 4077 bytes
+2026-05-18 18:53:00,860 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_115259.jpg
+2026-05-18 18:53:00,861 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 18:53:01,202 - ai.detect - INFO - No faces detected in image
+2026-05-18 18:53:01,202 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 18:53:34,041 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 18:53:34,042 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 18:53:34,042 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 18:53:34,043 - mqtt_client - INFO -    Timestamp: 2026-05-18T11:53:33Z
+2026-05-18 18:53:34,043 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 18:53:34,043 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 18:53:37,229 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Read timed out. (attempt 1/3)
+2026-05-18 18:53:37,730 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 2/3)...
+2026-05-18 18:53:37,872 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Max retries exceeded with url: /capture (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x78f1696d1580>: Failed to establish a new connection: [Errno 111] Connection refused')) (attempt 2/3)
+2026-05-18 18:53:38,373 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 3/3)...
+2026-05-18 18:53:38,646 - mqtt_client - WARNING -    ⚠️  Connection error: HTTPConnectionPool(host='10.220.235.144', port=80): Max retries exceeded with url: /capture (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x78f1696d3140>: Failed to establish a new connection: [Errno 111] Connection refused')) (attempt 3/3)
+2026-05-18 18:53:38,646 - mqtt_client - ERROR -    ❌ Failed to fetch image from cam1 after 3 retries
+2026-05-18 18:53:38,647 - mqtt_client - WARNING - ❌ Failed to fetch image from cam1
+2026-05-18 19:12:09,165 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/cam1/motion'
+2026-05-18 19:12:09,165 - mqtt_client - INFO - 🔴 Motion event received from cam1
+2026-05-18 19:12:09,165 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 19:12:09,165 - mqtt_client - INFO -    Timestamp: 2026-05-18T12:12:08Z
+2026-05-18 19:12:09,165 - mqtt_client - INFO - 🔴 Fetching image via HTTP from cam1...
+2026-05-18 19:12:09,166 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 19:12:09,484 - mqtt_client - INFO -    ✅ Image fetched: 3687 bytes
+2026-05-18 19:12:09,485 - mqtt_client - INFO - Saved MQTT image locally: captured_images//cam1_20260518_121208.jpg
+2026-05-18 19:12:09,485 - mqtt_client - INFO - 🧠 Running AI detection on image from cam1
+2026-05-18 19:12:10,894 - ai.detect - INFO - No faces detected in image
+2026-05-18 19:12:10,894 - mqtt_client - INFO - ❌ No human detected for cam1
+2026-05-18 19:13:00,338 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/Front_door/motion'
+2026-05-18 19:13:00,338 - mqtt_client - INFO - 🔌 New ESP32 device detected: Front_door
+2026-05-18 19:13:00,339 - mqtt_client - INFO - 🔴 Motion event received from Front_door
+2026-05-18 19:13:00,339 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 19:13:00,339 - mqtt_client - INFO -    Timestamp: 2026-05-18T12:12:59Z
+2026-05-18 19:13:00,340 - mqtt_client - INFO - 🔴 Fetching image via HTTP from Front_door...
+2026-05-18 19:13:00,340 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 19:13:01,568 - mqtt_client - INFO -    ✅ Image fetched: 3263 bytes
+2026-05-18 19:13:01,569 - mqtt_client - INFO - Saved MQTT image locally: captured_images//Front_door_20260518_121259.jpg
+2026-05-18 19:13:01,569 - mqtt_client - INFO - 🧠 Running AI detection on image from Front_door
+2026-05-18 19:13:01,919 - ai.detect - INFO - No faces detected in image
+2026-05-18 19:13:01,919 - mqtt_client - INFO - ❌ No human detected for Front_door
+2026-05-18 19:13:15,291 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/Front_door/motion'
+2026-05-18 19:13:15,291 - mqtt_client - INFO - 🔴 Motion event received from Front_door
+2026-05-18 19:13:15,291 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 19:13:15,292 - mqtt_client - INFO -    Timestamp: 2026-05-18T12:13:14Z
+2026-05-18 19:13:15,292 - mqtt_client - INFO - 🔴 Fetching image via HTTP from Front_door...
+2026-05-18 19:13:15,292 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 19:13:15,514 - mqtt_client - INFO -    ✅ Image fetched: 3253 bytes
+2026-05-18 19:13:15,515 - mqtt_client - INFO - Saved MQTT image locally: captured_images//Front_door_20260518_121314.jpg
+2026-05-18 19:13:15,515 - mqtt_client - INFO - 🧠 Running AI detection on image from Front_door
+2026-05-18 19:13:15,826 - ai.detect - INFO - No faces detected in image
+2026-05-18 19:13:15,827 - mqtt_client - INFO - ❌ No human detected for Front_door
+2026-05-18 19:13:30,344 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/Front_door/motion'
+2026-05-18 19:13:30,344 - mqtt_client - INFO - 🔴 Motion event received from Front_door
+2026-05-18 19:13:30,344 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 19:13:30,344 - mqtt_client - INFO -    Timestamp: 2026-05-18T12:13:29Z
+2026-05-18 19:13:30,345 - mqtt_client - INFO - 🔴 Fetching image via HTTP from Front_door...
+2026-05-18 19:13:30,345 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 19:13:30,872 - mqtt_client - INFO -    ✅ Image fetched: 3253 bytes
+2026-05-18 19:13:30,873 - mqtt_client - INFO - Saved MQTT image locally: captured_images//Front_door_20260518_121329.jpg
+2026-05-18 19:13:30,873 - mqtt_client - INFO - 🧠 Running AI detection on image from Front_door
+2026-05-18 19:13:31,268 - ai.detect - INFO - No faces detected in image
+2026-05-18 19:13:31,268 - mqtt_client - INFO - ❌ No human detected for Front_door
+2026-05-18 19:13:45,397 - mqtt_client - INFO - 📨 MQTT message received from topic 'camera/Front_door/motion'
+2026-05-18 19:13:45,397 - mqtt_client - INFO - 🔴 Motion event received from Front_door
+2026-05-18 19:13:45,397 - mqtt_client - INFO -    ESP32 IP: 10.220.235.144
+2026-05-18 19:13:45,397 - mqtt_client - INFO -    Timestamp: 2026-05-18T12:13:44Z
+2026-05-18 19:13:45,398 - mqtt_client - INFO - 🔴 Fetching image via HTTP from Front_door...
+2026-05-18 19:13:45,398 - mqtt_client - INFO -    🔗 HTTP GET http://10.220.235.144:80/capture (attempt 1/3)...
+2026-05-18 19:13:45,589 - mqtt_client - INFO -    ✅ Image fetched: 3137 bytes
+2026-05-18 19:13:45,590 - mqtt_client - INFO - Saved MQTT image locally: captured_images//Front_door_20260518_121344.jpg
+2026-05-18 19:13:45,590 - mqtt_client - INFO - 🧠 Running AI detection on image from Front_door
+2026-05-18 19:13:45,989 - ai.detect - INFO - No faces detected in image
+2026-05-18 19:13:45,989 - mqtt_client - INFO - ❌ No human detected for Front_door

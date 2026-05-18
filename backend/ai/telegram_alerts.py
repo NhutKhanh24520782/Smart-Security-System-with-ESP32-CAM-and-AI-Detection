@@ -19,13 +19,14 @@ class FaceAlertManager:
         self.last_unknown_face_time = {}  # Track last unknown face alert per camera
         self.alert_cooldown_seconds = 30  # Don't spam alerts
     
-    def handle_detection_result(self, detection_result, camera_id=None):
+    def handle_detection_result(self, detection_result, camera_id=None, image_bytes=None):
         """
         Process detection result and send appropriate Telegram alerts.
         
         Args:
             detection_result: Result from detect_and_recognize_faces()
             camera_id: Optional camera identifier for multi-camera setups
+            image_bytes: Optional image bytes to send with alerts
         
         Returns:
             list: List of sent alerts
@@ -40,18 +41,31 @@ class FaceAlertManager:
         for face in faces:
             if face['status'] == 'KNOWN':
                 alert = self._create_known_alert(face, camera_id)
-                if self.telegram.send_message(alert['message'], alert.get('emoji')):
-                    alerts_sent.append(alert)
-                    logger.info(f"Alert sent: {alert['type']}")
+                # Send with image for known person
+                if image_bytes:
+                    if self.telegram._send_photo(alert['message'], image_bytes):
+                        alerts_sent.append(alert)
+                        logger.info(f"📸 Alert with image sent: {alert['type']}")
+                else:
+                    if self.telegram.send_message(alert['message'], alert.get('emoji')):
+                        alerts_sent.append(alert)
+                        logger.info(f"Alert sent: {alert['type']}")
             
             elif face['status'] == 'UNKNOWN':
                 alert = self._create_unknown_alert(face, camera_id)
                 # Only send unknown face alerts with cooldown
                 if self._should_send_alert(camera_id):
-                    if self.telegram.send_message(alert['message'], alert.get('emoji')):
-                        alerts_sent.append(alert)
-                        logger.info(f"Alert sent: {alert['type']}")
-                        self._update_alert_time(camera_id)
+                    # Send with image for unknown person
+                    if image_bytes:
+                        if self.telegram._send_photo(alert['message'], image_bytes):
+                            alerts_sent.append(alert)
+                            logger.info(f"📸 Alert with image sent: {alert['type']}")
+                            self._update_alert_time(camera_id)
+                    else:
+                        if self.telegram.send_message(alert['message'], alert.get('emoji')):
+                            alerts_sent.append(alert)
+                            logger.info(f"Alert sent: {alert['type']}")
+                            self._update_alert_time(camera_id)
         
         return alerts_sent
     
@@ -129,13 +143,14 @@ def init_alert_manager():
     return alert_manager
 
 
-def handle_detection_alert(detection_result, camera_id=None):
+def handle_detection_alert(detection_result, camera_id=None, image_bytes=None):
     """
     Convenience function to handle alerts for a detection result.
     
     Args:
         detection_result: Result from detect_and_recognize_faces()
         camera_id: Optional camera identifier
+        image_bytes: Optional raw image bytes to send with alert
     
     Returns:
         list: List of sent alerts
@@ -144,7 +159,7 @@ def handle_detection_alert(detection_result, camera_id=None):
     if alert_manager is None:
         alert_manager = init_alert_manager()
     
-    return alert_manager.handle_detection_result(detection_result, camera_id)
+    return alert_manager.handle_detection_result(detection_result, camera_id, image_bytes)
 
 
 # ==================== Integration Example ====================

@@ -99,12 +99,21 @@ def upload_image():
             alert = coordinator.add_detection(device_id, datetime.now(), confidence)
             if alert:
                 send_alert(device_id, image_bytes, alert['message'])
+            
+            # ✅ Check if any known person detected and send door open command
+            known_faces = [face for face in detection_result.get('faces', []) 
+                          if face.get('status') == 'KNOWN']
+            if known_faces:
+                names = [face.get('name', 'Unknown') for face in known_faces]
+                logger.info(f"🔓 Known person(s) detected: {names}")
+                if mqtt_client_instance:
+                    mqtt_client_instance._send_door_open_command(device_id, known_faces)
         else:
             logger.info(f"No human detected in image from {device_id}")
 
         # Send face-specific alerts using new system
         from ai.telegram_alerts import handle_detection_alert
-        handle_detection_alert(detection_result, device_id)
+        handle_detection_alert(detection_result, device_id, image_bytes)
 
         return jsonify({
             'status': 'success',

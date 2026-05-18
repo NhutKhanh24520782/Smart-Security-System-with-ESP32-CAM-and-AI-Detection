@@ -6,8 +6,8 @@ FLASK_PORT = 5002
 FLASK_DEBUG = False  # Disable debug mode to prevent restart loop from log/image writes
 
 # Telegram bot configuration
-TELEGRAM_BOT_TOKEN = '8798378490:AAE7timUHd8ZPFWybJox6ODXtNgEs0blrjQ'  # Get from @BotFather
-TELEGRAM_CHAT_ID = '6937833381'      # Get chat ID from bot
+TELEGRAM_BOT_TOKEN = '7978628113:AAFPGkqIRc8lzWKBisAM0P2vkZs2VH1Y6a4'  # Get from @BotFather
+TELEGRAM_CHAT_ID = '6688008932'      # Get chat ID from bot
 
 # AI Detection configuration
 AI_METHOD = 'aws'  # Options: 'opencv', 'aws'

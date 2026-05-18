@@ -121,12 +121,26 @@ class MqttBackendClient:
                 if alert:
                     logger.info(f"🚨 Sending alert: {alert['message']}")
                     send_alert(device_id, image_bytes, alert['message'])
+                
+                # ✅ Check if any known person detected and send door open command
+                known_faces = [face for face in detection_result.get('faces', []) 
+                              if face.get('status') == 'KNOWN']
+                if known_faces:
+                    logger.info(f"🔓 Known person(s) detected: {[f.get('name') for f in known_faces]}")
+                    self._send_door_open_command(device_id, known_faces)
+                
+                # ⚠️ Check if any unknown person detected and send buzzer command
+                unknown_faces = [face for face in detection_result.get('faces', [])
+                                if face.get('status') == 'UNKNOWN']
+                if unknown_faces:
+                    logger.info(f"⚠️ Unknown person(s) detected!")
+                    self._send_buzzer_command(device_id)
             else:
                 logger.info(f"❌ No human detected for {device_id}")
 
             # Send face-specific alerts using new system
             from ai.telegram_alerts import handle_detection_alert
-            handle_detection_alert(detection_result, device_id)
+            handle_detection_alert(detection_result, device_id, image_bytes)
 
         except Exception as exc:
             logger.error(f"❌ Failed to handle MQTT message: {exc}", exc_info=True)
@@ -168,6 +182,55 @@ class MqttBackendClient:
         
         logger.error(f"   ❌ Failed to fetch image from {device_id} after {max_retries} retries")
         return None
+
+    def _send_door_open_command(self, device_id, known_faces):
+        """Send MQTT command to open door when known person is detected"""
+        try:
+            door_topic = f"door/{device_id}/control"
+            names = [face.get('name', 'Unknown') for face in known_faces]
+            
+            payload = {
+                'command': 'open',
+                'action': 'UNLOCK_DOOR',
+                'detected_persons': names,
+                'timestamp': datetime.now().isoformat()
+            }
+            
+            import json
+            payload_json = json.dumps(payload)
+            
+            result = self.client.publish(door_topic, payload_json, qos=1)
+            if result.rc == 0:
+                logger.info(f"🔓 Door open command sent to {door_topic}: {names}")
+            else:
+                logger.warning(f"⚠️  Failed to publish door open command: rc={result.rc}")
+                
+        except Exception as e:
+            logger.error(f"❌ Error sending door open command: {e}", exc_info=True)
+
+    def _send_buzzer_command(self, device_id):
+        """Send MQTT command to buzzer when unknown person is detected"""
+        try:
+            buzzer_topic = f"buzzer/{device_id}/control"
+            
+            payload = {
+                'command': 'buzzer',
+                'action': 'BUZZER_5SEC',
+                'duration': 5000,  # 5 seconds in milliseconds
+                'timestamp': datetime.now().isoformat()
+            }
+            
+            import json
+            payload_json = json.dumps(payload)
+            
+            result = self.client.publish(buzzer_topic, payload_json, qos=1)
+            if result.rc == 0:
+                logger.info(f"🔔 Buzzer 5s command sent to {buzzer_topic}")
+            else:
+                logger.warning(f"⚠️  Failed to publish buzzer command: rc={result.rc}")
+                
+        except Exception as e:
+            logger.error(f"❌ Error sending buzzer command: {e}", exc_info=True)
 
     def _save_local_image(self, device_id, image_bytes, timestamp):
         filename = f"{device_id}_{timestamp.strftime('%Y%m%d_%H%M%S')}.jpg"
