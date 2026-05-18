@@ -128,13 +128,6 @@ class MqttBackendClient:
                 if known_faces:
                     logger.info(f"🔓 Known person(s) detected: {[f.get('name') for f in known_faces]}")
                     self._send_door_open_command(device_id, known_faces)
-                
-                # ⚠️ Check if any unknown person detected and send buzzer command
-                unknown_faces = [face for face in detection_result.get('faces', [])
-                                if face.get('status') == 'UNKNOWN']
-                if unknown_faces:
-                    logger.info(f"⚠️ Unknown person(s) detected!")
-                    self._send_buzzer_command(device_id)
             else:
                 logger.info(f"❌ No human detected for {device_id}")
 
@@ -207,30 +200,6 @@ class MqttBackendClient:
                 
         except Exception as e:
             logger.error(f"❌ Error sending door open command: {e}", exc_info=True)
-
-    def _send_buzzer_command(self, device_id):
-        """Send MQTT command to buzzer when unknown person is detected"""
-        try:
-            buzzer_topic = f"buzzer/{device_id}/control"
-            
-            payload = {
-                'command': 'buzzer',
-                'action': 'BUZZER_5SEC',
-                'duration': 5000,  # 5 seconds in milliseconds
-                'timestamp': datetime.now().isoformat()
-            }
-            
-            import json
-            payload_json = json.dumps(payload)
-            
-            result = self.client.publish(buzzer_topic, payload_json, qos=1)
-            if result.rc == 0:
-                logger.info(f"🔔 Buzzer 5s command sent to {buzzer_topic}")
-            else:
-                logger.warning(f"⚠️  Failed to publish buzzer command: rc={result.rc}")
-                
-        except Exception as e:
-            logger.error(f"❌ Error sending buzzer command: {e}", exc_info=True)
 
     def _save_local_image(self, device_id, image_bytes, timestamp):
         filename = f"{device_id}_{timestamp.strftime('%Y%m%d_%H%M%S')}.jpg"
