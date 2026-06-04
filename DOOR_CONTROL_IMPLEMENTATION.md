@@ -152,7 +152,6 @@ mosquitto_pub -h <MQTT_HOST> -u <USER> -P <PASSWORD> \
 3. Recompile và upload
 
 ## Future Enhancements
-- [ ] Thêm face recognition cho cam2 với servo riêng
 - [ ] Thêm database lưu lại lịch sử mở cửa
 - [ ] Thêm 2FA (two-factor authentication) cho extra security
 - [ ] Thêm time-based auto-unlock (mở cửa trong giờ làm việc)
