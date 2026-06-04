@@ -15,7 +15,7 @@ A complete IoT security system using ESP32-CAM modules with PIR sensors, AI-powe
                                       ↓
                                [Multi-Camera Coordinator]
                                       ↓
-                               [Telegram Bot Alert]
+                               [Telegram Bot Alert and Reply Servo]
 ```
 
 ## 📁 Project Structure
@@ -52,6 +52,7 @@ project/
 - 2 x ESP32-CAM modules
 - 2 x PIR motion sensors
 - 2 x Active buzzers (LOW trigger)
+- 2 x Servo 
 - WiFi network
 - Power supplies for ESP32-CAM
 
@@ -114,7 +115,7 @@ Server will run on `http://localhost:5000`
 - PIR Sensor OUT → GPIO 13
 - Buzzer → GPIO 12 (LOW active)
 - Camera module: Standard ESP32-CAM pinout
-
+- Servo
 #### Flash ESP32
 1. Install Arduino IDE
 2. Install ESP32 board support
@@ -173,7 +174,7 @@ curl -X POST -F "device_id=cam1" -F "image=@test_image.jpg" http://localhost:500
 2. Flash and power ESP32
 3. Trigger motion detection
 4. Check Telegram for alerts
-
+5. Check Reply frontDoor and RearDoor for Servo
 ## 🤖 Face Detection & Recognition
 
 ### AWS Rekognition (Powered)
@@ -275,6 +276,4 @@ AWS_FACE_MATCH_THRESHOLD = 75.0
 
 This project is open source. Feel free to modify and distribute.
 
----
 
-Built with ❤️ for IoT security applications
